@@ -23,4 +23,17 @@ public class CompanyDao {
         }
     }
 
+    public static Company getCompanyById(long id) {
+        Company company;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            company = session.get(Company.class, id);
+
+            transaction.commit();
+        }
+        return company;
+    }
+
 }

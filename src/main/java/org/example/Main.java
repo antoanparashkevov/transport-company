@@ -16,6 +16,8 @@ public class Main {
 
         Company company = new Company("SAP", LocalDate.of(2020, 3, 3));
 
-        CompanyDao.createCompany(company);//create
+//        CompanyDao.createCompany(company);//create
+
+        System.out.println(CompanyDao.getCompanyById(1));//read (The ORM requires to have a default constructor inside the Company Entity
     }
 }

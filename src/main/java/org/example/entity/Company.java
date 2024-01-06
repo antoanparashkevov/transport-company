@@ -24,8 +24,20 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private Set<Vehicle> vehicles;
 
+    public Company() {
+    }
+
     public Company(String companyName, LocalDate foundationDate) {
         this.companyName = companyName;
         this.foundationDate = foundationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", companyName='" + companyName + '\'' +
+                ", foundationDate=" + foundationDate +
+                '}';
     }
 }
