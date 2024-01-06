@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity//mandatory annotation
+@Entity//mandatory annotation to be able to connect this class to the table
 @Table(name = "company")//overwrite the auto generated table name
 public class Company {
 
@@ -21,5 +21,7 @@ public class Company {
     @OneToMany(mappedBy = "company")//telling that the relation between both tables is managed by the employee table and the company field
     private Set<Employee> employees;
 
+    @OneToMany(mappedBy = "company")
+    private Set<Vehicle> vehicles;
 
 }
