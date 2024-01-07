@@ -14,6 +14,7 @@ import java.util.List;
 
 public class CompanyDao {
 
+    //create
     public static void createCompany(Company company) {
 
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
@@ -25,6 +26,7 @@ public class CompanyDao {
         }
     }
 
+    //read by id
     public static Company getCompanyById(long id) {
         Company company;
 
@@ -38,6 +40,7 @@ public class CompanyDao {
         return company;
     }
 
+    //read all
     public static List<Company> getAllCompanies() {
         List<Company> companies;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
@@ -49,5 +52,17 @@ public class CompanyDao {
         }
 
         return companies;
+    }
+
+    //update
+    public static void updateCompany(Company company) {
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            session.saveOrUpdate(company);//saveOrUpdate executes either an INSERT query or an UPDATE query depending on whether the record with a given primary key exist or not
+
+            transaction.commit();
+        }
     }
 }

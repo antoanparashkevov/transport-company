@@ -24,6 +24,7 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private Set<Vehicle> vehicles;
 
+    //default constructor
     public Company() {
     }
 
@@ -31,6 +32,38 @@ public class Company {
         this.companyName = companyName;
         this.foundationDate = foundationDate;
     }
+
+    //GETTERS START
+
+    public long getId() {
+        return id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public LocalDate getFoundationDate() {
+        return foundationDate;
+    }
+
+    //GETTERS END
+
+    //SETTERS START
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setFoundationDate(LocalDate foundationDate) {
+        this.foundationDate = foundationDate;
+    }
+
+    //SETTERS END
 
     @Override
     public String toString() {
