@@ -36,6 +36,9 @@ public class Purchase {
     @ManyToOne
     private Company company;
 
+    @ManyToOne
+    private Vehicle vehicle;
+
     //default constructor
     public Purchase() {
     }
