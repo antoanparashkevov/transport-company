@@ -33,6 +33,9 @@ public class Purchase {
     @OneToOne(mappedBy = "purchase")
     private Receipt receipt;
 
+    @ManyToOne
+    private Company company;
+
     //default constructor
     public Purchase() {
     }

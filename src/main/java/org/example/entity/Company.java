@@ -28,6 +28,10 @@ public class Company {
     @ManyToMany
     private List<Client> clients;
 
+    //creating bidirectional relationship between purchase and company
+    @OneToMany(mappedBy = "company")//telling that the relation between both tables is managed by the purchase table and the company field
+    private List<Purchase> purchases;
+
     //default constructor
     public Company() {
     }
