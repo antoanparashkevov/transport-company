@@ -24,7 +24,7 @@ public class Employee {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Company company;
 
-    @ManyToMany(mappedBy = "employees", fetch = FetchType.LAZY)//TODO: WHY?
+    @ManyToMany(mappedBy = "employees", fetch = FetchType.LAZY)
     private Set<Qualification> qualifications;
 
     //default constructor

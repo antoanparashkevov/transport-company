@@ -31,11 +31,11 @@ public class Company {
     private Set<Vehicle> vehicles;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Client> clients;
+    private Set<Client> clients;
 
     //creating bidirectional relationship between purchase and company
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)//telling that the relation between both tables is managed by the purchase table and the company field
-    private List<Purchase> purchases;
+    private Set<Purchase> purchases;
 
     //default constructor
     public Company() {
@@ -60,6 +60,22 @@ public class Company {
         return foundationDate;
     }
 
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public Set<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
     //GETTERS END
 
     //SETTERS START
@@ -74,6 +90,22 @@ public class Company {
 
     public void setFoundationDate(LocalDate foundationDate) {
         this.foundationDate = foundationDate;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public void setVehicles(Set<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    public void setPurchases(Set<Purchase> purchases) {
+        this.purchases = purchases;
     }
 
     //SETTERS END

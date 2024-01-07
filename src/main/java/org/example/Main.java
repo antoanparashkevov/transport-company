@@ -32,5 +32,7 @@ public class Main {
 //        System.out.println(CompanyDao.companyFindByCompanyName("VM"));
 //        System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("SAP"));
 
+        System.out.println(CompanyDao.getCompanyEmployees(1));
+
     }
 }

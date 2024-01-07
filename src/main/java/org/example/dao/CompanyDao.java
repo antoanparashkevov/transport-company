@@ -12,11 +12,13 @@ import jakarta.persistence.criteria.Root;
 import org.example.configuration.SessionFactoryUtil;
 import org.example.entity.Company;
 
+import org.example.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Set;
 
 public class CompanyDao {
 
@@ -143,5 +145,28 @@ public class CompanyDao {
 //    }
 
     //criteria builder abstraction END
+
+    //join fetch methodology for fetching all employees from a given company id criteria
+    public static Set<Employee> getCompanyEmployees(long id) {
+        Company company;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()){
+            Transaction transaction = session.beginTransaction();
+
+            company = session.createQuery(
+            "select c from Company c" +
+                " join fetch c.employees" +
+                " where c.id = :id",
+                Company.class
+            )
+            .setParameter("id", id)
+            .getSingleResult();
+
+            transaction.commit();
+
+        }
+
+        return company.getEmployees();//each employee will represent all its fields + the populated company field
+    }
 
 }
