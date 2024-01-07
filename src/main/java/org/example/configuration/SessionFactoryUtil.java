@@ -23,6 +23,7 @@ public class SessionFactoryUtil {
             configuration.addAnnotatedClass(Qualification.class);
             configuration.addAnnotatedClass(Client.class);
             configuration.addAnnotatedClass(Purchase.class);
+            configuration.addAnnotatedClass(Receipt.class);
 
             ServiceRegistry serviceRegistry =
                     new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
