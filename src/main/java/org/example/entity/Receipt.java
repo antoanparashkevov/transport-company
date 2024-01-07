@@ -10,6 +10,9 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @OneToOne
+    private Purchase purchase;
+
     public Receipt() {
     }
 

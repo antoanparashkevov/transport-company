@@ -30,6 +30,9 @@ public class Purchase {
     @ManyToMany
     private List<Client> clients;
 
+    @OneToOne(mappedBy = "purchase")
+    private Receipt receipt;
+
     //default constructor
     public Purchase() {
     }
