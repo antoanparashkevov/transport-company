@@ -2,6 +2,8 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="client")
 public class Client {
@@ -22,6 +24,9 @@ public class Client {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    @ManyToMany(mappedBy = "clients")
+    private List<Purchase> purchases;
 
     //GETTERS START
 
