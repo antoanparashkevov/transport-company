@@ -41,6 +41,7 @@ public class Company {
     public Company() {
     }
 
+    //parametrized constructor
     public Company(String companyName, LocalDate foundationDate) {
         this.companyName = companyName;
         this.foundationDate = foundationDate;

@@ -31,6 +31,7 @@ public class Client {
     public Client() {
     }
 
+    //parametrized constructor
     public Client(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;

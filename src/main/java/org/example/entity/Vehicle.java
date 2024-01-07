@@ -29,6 +29,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
+    //parametrized constructor
     public Vehicle(String type, String capacityUnit, float capacity, Company company, List<Purchase> purchases) {
         this.type = type;
         this.capacityUnit = capacityUnit;

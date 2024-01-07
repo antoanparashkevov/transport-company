@@ -21,6 +21,7 @@ public class Qualification {
     public Qualification() {
     }
 
+    //parametrized constructor
     public Qualification(String type, Set<Employee> employees) {
         this.type = type;
         this.employees = employees;

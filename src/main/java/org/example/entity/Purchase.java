@@ -43,6 +43,7 @@ public class Purchase {
     public Purchase() {
     }
 
+    //parametrized constructor
     public Purchase(LocalDate start_time, LocalDate end_time, String arrivalPlace, String departurePlace, float price, String skill, List<Client> clients) {
         this.start_time = start_time;
         this.end_time = end_time;

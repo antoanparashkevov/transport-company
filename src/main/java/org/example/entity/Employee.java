@@ -31,6 +31,7 @@ public class Employee {
     public Employee() {
     }
 
+    //parametrized constructor
     public Employee(String firstName, String lastName, float salary, Company company, Set<Qualification> qualifications) {
         this.firstName = firstName;
         this.lastName = lastName;
