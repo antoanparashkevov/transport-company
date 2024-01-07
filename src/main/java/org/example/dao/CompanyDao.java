@@ -84,8 +84,10 @@ public class CompanyDao {
         }
     }
 
-    //criteria builder abstraction
+    //criteria builder abstraction START
+
     public static Company companyFindByCompanyName(String companyName) {
+
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
 
             //create a criteria builder
@@ -111,4 +113,35 @@ public class CompanyDao {
 
         }
     }
+
+//    public static Company companyFindByCompanyNameStartingWith(String companyName) {
+//
+//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+//
+//            //create a criteria builder
+//            CriteriaBuilder cb = session.getCriteriaBuilder();
+//
+//            //create a criteria query using the criteria builder
+//            CriteriaQuery<Company> cq = cb.createQuery(Company.class);
+//
+//            //create a root pointing to the entity that we want to perform the criteria query
+//            Root<Company> root = cq.from(Company.class);
+//
+//            //perform the query using the criteria query we've created above
+//            cq.select(root).where(cb.equal(root.get("companyName"), companyName));
+//
+//            //create another query using the already created one
+//            Query<Company> query = session.createQuery(cq);
+//
+//            //get the results from the newest query
+//            Company company = query.getSingleResult();
+//
+//            //return the results
+//            return company;
+//
+//        }
+//    }
+
+    //criteria builder abstraction END
+
 }
