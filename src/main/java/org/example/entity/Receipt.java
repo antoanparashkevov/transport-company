@@ -16,20 +16,25 @@ public class Receipt {
     @OneToOne
     private Client client;
 
+    //default constructor
     public Receipt() {
     }
 
-    public Receipt(long id) {
-        this.id = id;
-    }
+    //GETTERS START
 
     public long getId() {
         return id;
     }
 
+    //GETTERS END
+
+    //SETTERS START
+
     public void setId(long id) {
         this.id = id;
     }
+
+    //SETTERS END
 
     @Override
     public String toString() {

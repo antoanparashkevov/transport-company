@@ -15,4 +15,45 @@ public class Qualification {
 
     @ManyToMany
     private Set<Employee> employees;
+
+    //default constructor
+    public Qualification() {
+    }
+
+    public Qualification(String type, Set<Employee> employees) {
+        this.type = type;
+        this.employees = employees;
+    }
+
+    //GETTERS START
+
+    public long getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    //GETTERS END
+
+    //SETTERS START
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    //SETTERS END
+
+    @Override
+    public String toString() {
+        return "Qualification{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

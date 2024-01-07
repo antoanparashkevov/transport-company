@@ -16,15 +16,6 @@ public class Client {
 
     private String lastName;
 
-    //default constructor
-    public Client() {
-    }
-
-    public Client(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
     @ManyToMany(mappedBy = "clients")
     private List<Purchase> purchases;
 
@@ -33,6 +24,15 @@ public class Client {
 
     @OneToOne(mappedBy = "client")
     private Receipt receipt;
+
+    //default constructor
+    public Client() {
+    }
+
+    public Client(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     //GETTERS START
 
