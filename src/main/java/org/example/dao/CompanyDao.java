@@ -5,10 +5,16 @@ package org.example.dao;
 //DAO layer
 //there is no need to add any annotations since we get the session from the session configuration in order to communicate with the database
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
 import org.example.configuration.SessionFactoryUtil;
 import org.example.entity.Company;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -75,6 +81,34 @@ public class CompanyDao {
             session.delete(company);
 
             transaction.commit();
+        }
+    }
+
+    //criteria builder abstraction
+    public static Company companyFindByCompanyName(String companyName) {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+
+            //create a criteria builder
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+
+            //create a query using the criteria builder
+            CriteriaQuery<Company> cq = cb.createQuery(Company.class);
+
+            //create a root pointing to the entity that we want to perform the query
+            Root<Company> root = cq.from(Company.class);
+
+            //perform the query using the criteria query we've created above
+            cq.select(root).where(cb.equal(root.get("companyName"), companyName));
+
+            //create another query using the already created one
+            Query<Company> query = session.createQuery(cq);
+
+            //get the results from the newest query
+            Company company = query.getSingleResult();
+
+            //return the results
+            return company;
+
         }
     }
 }

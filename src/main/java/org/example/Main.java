@@ -27,9 +27,11 @@ public class Main {
 //        company.setId(1);//means we want to UPDATE the record with primary key (id) 1. If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
 //        CompanyDao.updateCompany(company);
 
-        Company company = CompanyDao.getCompanyById(3);
+//        Company company = CompanyDao.getCompanyById(3);
 
-        CompanyDao.deleteCompany(company);
+//        CompanyDao.deleteCompany(company);
+
+        System.out.println(CompanyDao.companyFindByCompanyName("VM"));
 
     }
 }
