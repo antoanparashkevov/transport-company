@@ -1,6 +1,8 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,8 +16,11 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
+    @Size(min=3, max=10)//makes the field not nullable
+    @Column(name="company_name", nullable = false, unique = true)
     private String companyName;
 
+    @Column(name="foundation_date", nullable = false)
     private LocalDate foundationDate;
 
     //creating bidirectional relationship between employee and company

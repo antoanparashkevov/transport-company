@@ -10,10 +10,10 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Purchase purchase;
 
-    @OneToOne
+    @OneToOne(optional = false)//not nullable
     private Client client;
 
     //default constructor

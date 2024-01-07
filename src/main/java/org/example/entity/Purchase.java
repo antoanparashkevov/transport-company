@@ -16,15 +16,15 @@ public class Purchase {
     private LocalDate start_time;
     private LocalDate end_time;
 
-    private String arrival_place;
-    private String departure_place;
+    @Column(name = "arrival_place", nullable = false)
+    private String arrivalPlace;
+
+    @Column(name = "departure_place", nullable = false)
+    private String departurePlace;
 
     private float price;
 
-    private String type;
-
-    private String weight;
-
+    @Column(name = "skill", nullable = false)
     private String skill;
 
     @ManyToMany
@@ -43,14 +43,12 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(LocalDate start_time, LocalDate end_time, String arrival_place, String departure_place, float price, String type, String weight, String skill, List<Client> clients) {
+    public Purchase(LocalDate start_time, LocalDate end_time, String arrivalPlace, String departurePlace, float price, String skill, List<Client> clients) {
         this.start_time = start_time;
         this.end_time = end_time;
-        this.arrival_place = arrival_place;
-        this.departure_place = departure_place;
+        this.arrivalPlace = arrivalPlace;
+        this.departurePlace = departurePlace;
         this.price = price;
-        this.type = type;
-        this.weight = weight;
         this.skill = skill;
         this.clients = clients;
     }
@@ -69,24 +67,16 @@ public class Purchase {
         return end_time;
     }
 
-    public String getArrival_place() {
-        return arrival_place;
+    public String getArrivalPlace() {
+        return arrivalPlace;
     }
 
-    public String getDeparture_place() {
-        return departure_place;
+    public String getDeparturePlace() {
+        return departurePlace;
     }
 
     public float getPrice() {
         return price;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getWeight() {
-        return weight;
     }
 
     public String getSkill() {
@@ -113,24 +103,16 @@ public class Purchase {
         this.end_time = end_time;
     }
 
-    public void setArrival_place(String arrival_place) {
-        this.arrival_place = arrival_place;
+    public void setArrivalPlace(String arrivalPlace) {
+        this.arrivalPlace = arrivalPlace;
     }
 
-    public void setDeparture_place(String departure_place) {
-        this.departure_place = departure_place;
+    public void setDeparturePlace(String departurePlace) {
+        this.departurePlace = departurePlace;
     }
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
     }
 
     public void setSkill(String skill) {
@@ -149,11 +131,9 @@ public class Purchase {
                 "id=" + id +
                 ", start_time=" + start_time +
                 ", end_time=" + end_time +
-                ", arrival_place='" + arrival_place + '\'' +
-                ", departure_place='" + departure_place + '\'' +
+                ", arrival_place='" + arrivalPlace + '\'' +
+                ", departure_place='" + departurePlace + '\'' +
                 ", price=" + price +
-                ", type='" + type + '\'' +
-                ", weight='" + weight + '\'' +
                 ", skill='" + skill + '\'' +
                 '}';
     }
