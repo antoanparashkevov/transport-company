@@ -21,10 +21,10 @@ public class Employee {
     @Column(name = "salary", nullable = false)
     private float salary;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Company company;
 
-    @ManyToMany(mappedBy = "employees")//TODO: WHY?
+    @ManyToMany(mappedBy = "employees", fetch = FetchType.LAZY)//TODO: WHY?
     private Set<Qualification> qualifications;
 
     //default constructor

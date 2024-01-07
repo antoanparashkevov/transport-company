@@ -27,16 +27,16 @@ public class Purchase {
     @Column(name = "skill", nullable = false)
     private String skill;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Client> clients;
 
-    @OneToOne(mappedBy = "purchase")
+    @OneToOne(mappedBy = "purchase", fetch = FetchType.LAZY)
     private Receipt receipt;
 
-    @ManyToOne(optional = false)//make this field non-nullable
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
     private Company company;
 
-    @ManyToOne(optional = false)//make this field non-nullable
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
     private Vehicle vehicle;
 
     //default constructor

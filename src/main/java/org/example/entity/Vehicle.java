@@ -18,11 +18,11 @@ public class Vehicle {
 
     private float capacity;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Company company;
 
     //creating bidirectional relationship between vehicle and purchase
-    @OneToMany(mappedBy = "vehicle")
+    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
     private List<Purchase> purchases;//telling that the relation between both tables is managed by the purchase table and the vehicle field
 
     //default constructor

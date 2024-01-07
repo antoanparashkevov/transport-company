@@ -18,13 +18,13 @@ public class Client {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @ManyToMany(mappedBy = "clients")
+    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
     private List<Purchase> purchases;
 
-    @ManyToMany(mappedBy = "clients")
+    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
     private List<Company> companies;
 
-    @OneToOne(mappedBy = "client")
+    @OneToOne(mappedBy = "client", fetch = FetchType.LAZY)
     private Receipt receipt;
 
     //default constructor

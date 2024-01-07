@@ -14,7 +14,7 @@ public class Qualification {
     @Column(name = "type", nullable = false)
     private String type;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
     //default constructor

@@ -10,10 +10,10 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Purchase purchase;
 
-    @OneToOne(optional = false)//not nullable
+    @OneToOne(optional = false, fetch = FetchType.LAZY)//not nullable
     private Client client;
 
     //default constructor

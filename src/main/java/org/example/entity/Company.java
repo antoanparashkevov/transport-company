@@ -24,17 +24,17 @@ public class Company {
     private LocalDate foundationDate;
 
     //creating bidirectional relationship between employee and company
-    @OneToMany(mappedBy = "company")//telling that the relation between both tables is managed by the employee table and the company field
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)//telling that the relation between both tables is managed by the employee table and the company field
     private Set<Employee> employees;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private Set<Vehicle> vehicles;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Client> clients;
 
     //creating bidirectional relationship between purchase and company
-    @OneToMany(mappedBy = "company")//telling that the relation between both tables is managed by the purchase table and the company field
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)//telling that the relation between both tables is managed by the purchase table and the company field
     private List<Purchase> purchases;
 
     //default constructor
