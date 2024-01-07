@@ -10,8 +10,6 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello world");
-
         SessionFactoryUtil.getSessionFactory().openSession();
 
 //        Company company = new Company("SAP", LocalDate.of(2020, 3, 3));
