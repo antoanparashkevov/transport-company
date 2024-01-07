@@ -166,7 +166,7 @@ public class CompanyDao {
 
         }
 
-        return company.getEmployees();//each employee will represent all its fields + the populated company field
+        return company.getEmployees();//will call the Employee toString()
     }
 
 }
