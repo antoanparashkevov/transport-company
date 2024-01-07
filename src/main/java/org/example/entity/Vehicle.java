@@ -18,7 +18,7 @@ public class Vehicle {
 
     private float capacity;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Company company;
 
     //creating bidirectional relationship between vehicle and purchase

@@ -33,10 +33,10 @@ public class Purchase {
     @OneToOne(mappedBy = "purchase")
     private Receipt receipt;
 
-    @ManyToOne
+    @ManyToOne(optional = false)//make this field non-nullable
     private Company company;
 
-    @ManyToOne
+    @ManyToOne(optional = false)//make this field non-nullable
     private Vehicle vehicle;
 
     //default constructor

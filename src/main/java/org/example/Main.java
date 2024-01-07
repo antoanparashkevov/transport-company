@@ -31,7 +31,7 @@ public class Main {
 
 //        CompanyDao.deleteCompany(company);
 
-        System.out.println(CompanyDao.companyFindByCompanyName("VM"));
+//        System.out.println(CompanyDao.companyFindByCompanyName("VM"));
 //        System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("SAP"));
 
     }

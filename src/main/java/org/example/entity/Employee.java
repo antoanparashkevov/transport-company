@@ -21,7 +21,7 @@ public class Employee {
     @Column(name = "salary", nullable = false)
     private float salary;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Company company;
 
     @ManyToMany(mappedBy = "employees")//TODO: WHY?
