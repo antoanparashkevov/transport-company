@@ -13,6 +13,9 @@ public class Receipt {
     @OneToOne
     private Purchase purchase;
 
+    @OneToOne
+    private Client client;
+
     public Receipt() {
     }
 

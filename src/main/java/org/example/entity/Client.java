@@ -31,6 +31,9 @@ public class Client {
     @ManyToMany(mappedBy = "clients")
     private List<Company> companies;
 
+    @OneToOne(mappedBy = "client")
+    private Receipt receipt;
+
     //GETTERS START
 
     public long getId() {
