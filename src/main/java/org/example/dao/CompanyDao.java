@@ -10,6 +10,8 @@ import org.example.entity.Company;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class CompanyDao {
 
     public static void createCompany(Company company) {
@@ -36,4 +38,16 @@ public class CompanyDao {
         return company;
     }
 
+    public static List<Company> getAllCompanies() {
+        List<Company> companies;
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            companies = session.createQuery("Select c From Company c", Company.class).getResultList();
+
+            transaction.commit();
+        }
+
+        return companies;
+    }
 }

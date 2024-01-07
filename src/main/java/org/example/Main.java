@@ -18,6 +18,8 @@ public class Main {
 
 //        CompanyDao.createCompany(company);//create
 
-        System.out.println(CompanyDao.getCompanyById(1));//read (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(CompanyDao.getCompanyById(1));//read (The ORM requires to have a default constructor inside the Company Entity
+
+        System.out.println(CompanyDao.getAllCompanies());
     }
 }
