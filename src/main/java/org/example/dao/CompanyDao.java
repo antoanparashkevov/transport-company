@@ -91,10 +91,10 @@ public class CompanyDao {
             //create a criteria builder
             CriteriaBuilder cb = session.getCriteriaBuilder();
 
-            //create a query using the criteria builder
+            //create a criteria query using the criteria builder
             CriteriaQuery<Company> cq = cb.createQuery(Company.class);
 
-            //create a root pointing to the entity that we want to perform the query
+            //create a root pointing to the entity that we want to perform the criteria query
             Root<Company> root = cq.from(Company.class);
 
             //perform the query using the criteria query we've created above
