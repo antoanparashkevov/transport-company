@@ -28,6 +28,9 @@ public class Client {
     @ManyToMany(mappedBy = "clients")
     private List<Purchase> purchases;
 
+    @ManyToMany(mappedBy = "clients")
+    private List<Company> companies;
+
     //GETTERS START
 
     public long getId() {

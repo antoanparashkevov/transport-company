@@ -3,6 +3,7 @@ package org.example.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity//mandatory annotation to be able to connect this class to the table
@@ -23,6 +24,9 @@ public class Company {
 
     @OneToMany(mappedBy = "company")
     private Set<Vehicle> vehicles;
+
+    @ManyToMany
+    private List<Client> clients;
 
     //default constructor
     public Company() {
