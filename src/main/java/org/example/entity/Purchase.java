@@ -1,6 +1,10 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,12 +13,18 @@ import java.util.List;
 @Table(name="purchase")
 public class Purchase {
 
+    private static final float MIN_PRICE = 5.00F;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private LocalDate start_time;
-    private LocalDate end_time;
+    @PastOrPresent(message = "Start date cannot be in the future!")
+    @Column(name="start_time", nullable = false)
+    private LocalDate startTime;
+
+    @Column(name="end_time", nullable = false)
+    private LocalDate endTime;
 
     @Column(name = "arrival_place", nullable = false)
     private String arrivalPlace;
@@ -22,8 +32,15 @@ public class Purchase {
     @Column(name = "departure_place", nullable = false)
     private String departurePlace;
 
+    @Positive//not necessary since we already have a similar constraint named @DecimalMin but for demo purposes it's okay
+    @DecimalMin(
+        value = "5.00",
+        message = "The price of the order has to be more than or equal to " + MIN_PRICE + " BGN"
+    )
+    @Column(name="price", nullable = false)
     private float price;
 
+    @NotBlank(message = "The skill for the order cannot be blank!")
     @Column(name = "skill", nullable = false)
     private String skill;
 
@@ -36,17 +53,14 @@ public class Purchase {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
     private Company company;
 
-//    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
-//    private Vehicle vehicle;
-
     //default constructor
     public Purchase() {
     }
 
     //parametrized constructor
-    public Purchase(LocalDate start_time, LocalDate end_time, String arrivalPlace, String departurePlace, float price, String skill, List<Client> clients) {
-        this.start_time = start_time;
-        this.end_time = end_time;
+    public Purchase(LocalDate startTime, LocalDate endTime, String arrivalPlace, String departurePlace, float price, String skill, List<Client> clients) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.arrivalPlace = arrivalPlace;
         this.departurePlace = departurePlace;
         this.price = price;
@@ -61,11 +75,11 @@ public class Purchase {
     }
 
     public LocalDate getStart_time() {
-        return start_time;
+        return startTime;
     }
 
     public LocalDate getEnd_time() {
-        return end_time;
+        return endTime;
     }
 
     public String getArrivalPlace() {
@@ -96,12 +110,12 @@ public class Purchase {
         this.id = id;
     }
 
-    public void setStart_time(LocalDate start_time) {
-        this.start_time = start_time;
+    public void setStart_time(LocalDate startTime) {
+        this.startTime = startTime;
     }
 
-    public void setEnd_time(LocalDate end_time) {
-        this.end_time = end_time;
+    public void setEnd_time(LocalDate endTime) {
+        this.endTime = endTime;
     }
 
     public void setArrivalPlace(String arrivalPlace) {
@@ -130,8 +144,8 @@ public class Purchase {
     public String toString() {
         return "Purchase{" +
                 "id=" + id +
-                ", start_time=" + start_time +
-                ", end_time=" + end_time +
+                ", start_time=" + startTime +
+                ", end_time=" + endTime +
                 ", arrival_place='" + arrivalPlace + '\'' +
                 ", departure_place='" + departurePlace + '\'' +
                 ", price=" + price +

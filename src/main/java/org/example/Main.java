@@ -12,31 +12,33 @@ public class Main {
 
         SessionFactoryUtil.getSessionFactory().openSession();
 
-//        Company company = new Company("SAP", LocalDate.of(2024, 1, 1));
+//      Company company = new Company("SAP", LocalDate.of(2024, 1, 1));
 
         //create a company
-//        CompanyDao.createCompany(company);
+//      CompanyDao.createCompany(company);
 
         //read a company (The ORM requires to have a default constructor inside the Company Entity
-        System.out.println(CompanyDao.getCompanyById(1));
+//      System.out.println(CompanyDao.getCompanyById(1));
 
-//        System.out.println(CompanyDao.getAllCompanies());
+        //read all companies
+//      System.out.println(CompanyDao.getAllCompanies());
 
-//        Company company = new Company("SAPupdated", LocalDate.of(2020, 3, 3
+        //update a company
+//      company.setId(1);//means we want to UPDATE the record with primary key (id) 1. If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//      CompanyDao.updateCompany(company);
 
-//        company.setId(1);//means we want to UPDATE the record with primary key (id) 1. If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
-//        CompanyDao.updateCompany(company);
+        //delete a company
+//      CompanyDao.deleteCompany(company);
 
-//        Company company = CompanyDao.getCompanyById(3);
 
-//        CompanyDao.deleteCompany(company);
+//      System.out.println(CompanyDao.companyFindByCompanyName("VM"));
 
-//        System.out.println(CompanyDao.companyFindByCompanyName("VM"));
-//        System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("S"));
+//      System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("S"));
 
-//        System.out.println(CompanyDao.getCompanyEmployees(1));
+//      System.out.println(CompanyDao.getCompanyEmployees(1));
 
-//        System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
+//      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
+
 
     }
 }
