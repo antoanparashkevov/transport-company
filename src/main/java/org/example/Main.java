@@ -32,7 +32,9 @@ public class Main {
 //        System.out.println(CompanyDao.companyFindByCompanyName("VM"));
 //        System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("S"));
 
-        System.out.println(CompanyDao.getCompanyEmployees(1));
+//        System.out.println(CompanyDao.getCompanyEmployees(1));
+
+        System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
 
     }
 }
