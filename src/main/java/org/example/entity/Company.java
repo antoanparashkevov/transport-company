@@ -27,8 +27,8 @@ public class Company {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)//telling that the relation between both tables is managed by the employee table and the company field
     private Set<Employee> employees;
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    private Set<Vehicle> vehicles;
+//    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+//    private Set<Vehicle> vehicles;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Client> clients;
@@ -65,9 +65,9 @@ public class Company {
         return employees;
     }
 
-    public Set<Vehicle> getVehicles() {
-        return vehicles;
-    }
+//    public Set<Vehicle> getVehicles() {
+//        return vehicles;
+//    }
 
     public Set<Client> getClients() {
         return clients;
@@ -97,9 +97,9 @@ public class Company {
         this.employees = employees;
     }
 
-    public void setVehicles(Set<Vehicle> vehicles) {
-        this.vehicles = vehicles;
-    }
+//    public void setVehicles(Set<Vehicle> vehicles) {
+//        this.vehicles = vehicles;
+//    }
 
     public void setClients(Set<Client> clients) {
         this.clients = clients;

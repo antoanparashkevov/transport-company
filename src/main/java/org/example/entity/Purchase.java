@@ -36,8 +36,8 @@ public class Purchase {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
     private Company company;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
-    private Vehicle vehicle;
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
+//    private Vehicle vehicle;
 
     //default constructor
     public Purchase() {

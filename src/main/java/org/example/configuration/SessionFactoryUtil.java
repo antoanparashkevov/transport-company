@@ -19,7 +19,8 @@ public class SessionFactoryUtil {
 
             configuration.addAnnotatedClass(Company.class);
             configuration.addAnnotatedClass(Employee.class);
-            configuration.addAnnotatedClass(Vehicle.class);
+            configuration.addAnnotatedClass(Bus.class);
+            configuration.addAnnotatedClass(Truck.class);
             configuration.addAnnotatedClass(Qualification.class);
             configuration.addAnnotatedClass(Client.class);
             configuration.addAnnotatedClass(Purchase.class);
