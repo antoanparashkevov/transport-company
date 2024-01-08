@@ -14,17 +14,17 @@ import java.util.Set;
 public class Company {
 
     //these two constants should be static unless you want to be added as fields to the table
-    private static final int MIN_NAME = 3;
-    private static final int MAX_NAME = 10;
+    private static final int MIN_NAME_LENGTH = 3;
+    private static final int MAX_NAME_LENGTH = 10;
 
     @Id//to tell that this should be the primary key, add this annotation
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
     @Size(
-        min=MIN_NAME,
-        max=MAX_NAME,
-        message = "Company name should be between at least " + MIN_NAME + " and no longer than " + MAX_NAME + " characters long!"
+        min=MIN_NAME_LENGTH,
+        max=MAX_NAME_LENGTH,
+        message = "Company name should be between at least " + MIN_NAME_LENGTH + " and no longer than " + MAX_NAME_LENGTH + " characters long!"
     )
     @Column(name="company_name", nullable = false, unique = true)
     private String companyName;
