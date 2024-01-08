@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity//mandatory annotation to be able to connect this class to the table
-@Table(name = "company", uniqueConstraints = @UniqueConstraint(columnNames = "company_name"))//overwrite the auto generated table name
+@Table(name = "company", uniqueConstraints = @UniqueConstraint(columnNames = {"company_name"}))//overwrite the auto generated table name
 public class Company {
 
     //these two constants should be static unless you want to be added as fields to the table
