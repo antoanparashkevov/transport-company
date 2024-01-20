@@ -10,23 +10,27 @@ import java.util.List;
 import java.util.Set;
 
 @Entity//mandatory annotation to be able to connect this class to the table
-@Table(name = "company", uniqueConstraints = @UniqueConstraint(columnNames = {"company_name"}))//overwrite the auto generated table name
+@Table(
+    name = "company",//overwrite the auto generated table name
+    uniqueConstraints = @UniqueConstraint(columnNames = {"company_name"})
+)
 public class Company {
 
     //these two constants should be static unless you want to be added as fields to the table
     private static final int MIN_NAME_LENGTH = 3;
     private static final int MAX_NAME_LENGTH = 10;
 
-    @Id//to tell that this should be the primary key, add this annotation
+    @Id//This annotation tells that the field below should be the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
+    //Validation annotation
     @Size(
         min=MIN_NAME_LENGTH,
         max=MAX_NAME_LENGTH,
-        message = "Company name should be between at least " + MIN_NAME_LENGTH + " and no longer than " + MAX_NAME_LENGTH + " characters long!"
+        message = "Company name should be between " + MIN_NAME_LENGTH + " and no longer than " + MAX_NAME_LENGTH + " characters long!"
     )
-    @Column(name="company_name", nullable = false, unique = true)
+    @Column(name="company_name", nullable = false)
     private String companyName;
 
     @PastOrPresent(message = "Foundation date cannot be in the future!")
@@ -39,9 +43,11 @@ public class Company {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Client> clients;
+    //TODO: vehicles relationship of type one to many (one vehicle - one company, one company - many vehicles)
+    //TODO: the foreign key should be located at the vehicle table and the company field.
 
+    //the relation between both tables is managed by the purchase table and the company field
+    //implement lazy loading when read a company
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private Set<Purchase> purchases;
 
@@ -73,10 +79,6 @@ public class Company {
         return employees;
     }
 
-    public Set<Client> getClients() {
-        return clients;
-    }
-
     public Set<Purchase> getPurchases() {
         return purchases;
     }
@@ -99,10 +101,6 @@ public class Company {
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
-    }
-
-    public void setClients(Set<Client> clients) {
-        this.clients = clients;
     }
 
     public void setPurchases(Set<Purchase> purchases) {
