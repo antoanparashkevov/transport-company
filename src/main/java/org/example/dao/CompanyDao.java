@@ -69,7 +69,8 @@ public class CompanyDao {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            session.saveOrUpdate(company);//saveOrUpdate executes either an INSERT query or an UPDATE query depending on whether the record with a given primary key exist or not
+            //saveOrUpdate executes either an INSERT query or an UPDATE query depending on whether the record with a given primary key exist or not
+            session.saveOrUpdate(company);
 
             transaction.commit();
         }
