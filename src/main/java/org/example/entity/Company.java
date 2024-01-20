@@ -1,12 +1,10 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Entity//mandatory annotation to be able to connect this class with the corresponding table
@@ -46,6 +44,8 @@ public class Company {
     //TODO: vehicles relationship of type one to many
     // (one vehicle - one company, one company - many vehicles)
     // the foreign key should be located at the vehicle table and the company field.
+    //@OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    //private Set<Vehicle> vehicles;
 
     //the relation between both tables is managed by the purchase table and the company field
     //implement lazy loading when read a company

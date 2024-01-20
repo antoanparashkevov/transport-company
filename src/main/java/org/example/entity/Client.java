@@ -23,10 +23,6 @@ public class Client {
 
     //implement lazy loading when read a client
     @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
-    private Set<Company> companies;
-
-    //implement lazy loading when read a client
-    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
     private Set<Purchase> purchases;
 
     //creating bidirectional relationship between the client and the receipt
@@ -59,10 +55,6 @@ public class Client {
         return lastName;
     }
 
-    public Set<Company> getCompanies() {
-        return companies;
-    }
-
     public Set<Purchase> getPurchases() {
         return purchases;
     }
@@ -85,10 +77,6 @@ public class Client {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setCompanies(Set<Company> companies) {
-        this.companies = companies;
     }
 
     public void setPurchases(Set<Purchase> purchases) {

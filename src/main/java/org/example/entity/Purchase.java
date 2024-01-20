@@ -50,6 +50,8 @@ public class Purchase {
 
     //TODO: vehicle relationship of type many to one
     // (one vehicle - many purchases, one purchase - one vehicle)
+    //@ManyToOne(optional = false, fetch = FetchType.LAZY)
+    //private Vehicle vehicle;
 
     //implement lazy loading when read a company
     @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
