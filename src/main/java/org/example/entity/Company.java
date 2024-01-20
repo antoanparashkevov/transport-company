@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-@Entity//mandatory annotation to be able to connect this class to the table
+@Entity//mandatory annotation to be able to connect this class with the corresponding table
 @Table(
     name = "company",//overwrite the auto generated table name
     uniqueConstraints = @UniqueConstraint(columnNames = {"company_name"})
@@ -24,7 +24,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
-    //Validation annotation
+    //Validation constraint annotation
     @Size(
         min=MIN_NAME_LENGTH,
         max=MAX_NAME_LENGTH,

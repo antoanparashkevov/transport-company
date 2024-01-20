@@ -1,29 +1,36 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 import java.util.Set;
 
-@Entity
-@Table(name="employee")
+@Entity//mandatory annotation to be able to connect this class with the corresponding table
+@Table(name="employee")//overwrite the auto generated table name
 public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id//This annotation tells that the field below should be the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
+    @NotBlank(message = "You must provide your first name!")//Validation constraint annotation
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    @NotBlank(message = "You must provide your last name!")//Validation constraint annotation
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Positive(message = "The salary should be a positive number!")//Validation constraint annotation
     @Column(name = "salary", nullable = false)
     private float salary;
 
+    //implement lazy loading when read an employee
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Company company;
 
+    //implement lazy loading when read an employee
     @ManyToMany(mappedBy = "employees", fetch = FetchType.LAZY)
     private Set<Qualification> qualifications;
 
