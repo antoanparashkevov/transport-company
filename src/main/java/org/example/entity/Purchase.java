@@ -9,29 +9,32 @@ import jakarta.validation.constraints.Positive;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-@Table(name="purchase")
+@Entity//mandatory annotation to be able to connect this class with the corresponding table
+@Table(name="purchase")//overwrite the auto generated table name
 public class Purchase {
 
+    //the constant should be static unless you want to be added as field to the table
     private static final float MIN_PRICE = 5.00F;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id//This annotation tells that the field below should be the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
-    @PastOrPresent(message = "Start date cannot be in the future!")
+    //Validation constraint annotation
+    @PastOrPresent(message = "Start date cannot be in the future!")//Validation constraint annotation
     @Column(name="start_time", nullable = false)
     private LocalDate startTime;
 
     @Column(name="end_time", nullable = false)
     private LocalDate endTime;
 
-    @Column(name = "arrival_place", nullable = false)
-    private String arrivalPlace;
-
     @Column(name = "departure_place", nullable = false)
     private String departurePlace;
 
+    @Column(name = "arrival_place", nullable = false)
+    private String arrivalPlace;
+
+    //Validation constraint annotation
     @Positive//not necessary since we already have a similar constraint named @DecimalMin but for demo purposes it's okay
     @DecimalMin(
         value = "5.00",
@@ -40,18 +43,25 @@ public class Purchase {
     @Column(name="price", nullable = false)
     private float price;
 
+    //Validation constraint annotation
     @NotBlank(message = "The skill for the order cannot be blank!")
     @Column(name = "skill", nullable = false)
     private String skill;
 
+    //TODO: vehicle relationship of type many to one
+    // (one vehicle - many purchases, one purchase - one vehicle)
+
+    //implement lazy loading when read a company
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
+    private Company company;
+
+    //implement lazy loading when read a company
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Client> clients;
 
+    //implement lazy loading when read a company
     @OneToOne(mappedBy = "purchase", fetch = FetchType.LAZY)
     private Receipt receipt;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
-    private Company company;
 
     //default constructor
     public Purchase() {
@@ -82,12 +92,12 @@ public class Purchase {
         return endTime;
     }
 
-    public String getArrivalPlace() {
-        return arrivalPlace;
-    }
-
     public String getDeparturePlace() {
         return departurePlace;
+    }
+
+    public String getArrivalPlace() {
+        return arrivalPlace;
     }
 
     public float getPrice() {
@@ -98,8 +108,16 @@ public class Purchase {
         return skill;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
     public List<Client> getClients() {
         return clients;
+    }
+
+    public Receipt getReceipt() {
+        return receipt;
     }
 
     //GETTERS END
@@ -118,12 +136,12 @@ public class Purchase {
         this.endTime = endTime;
     }
 
-    public void setArrivalPlace(String arrivalPlace) {
-        this.arrivalPlace = arrivalPlace;
-    }
-
     public void setDeparturePlace(String departurePlace) {
         this.departurePlace = departurePlace;
+    }
+
+    public void setArrivalPlace(String arrivalPlace) {
+        this.arrivalPlace = arrivalPlace;
     }
 
     public void setPrice(float price) {
@@ -134,8 +152,16 @@ public class Purchase {
         this.skill = skill;
     }
 
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    public void setReceipt(Receipt receipt) {
+        this.receipt = receipt;
     }
 
     //SETTERS END
@@ -146,8 +172,8 @@ public class Purchase {
                 "id=" + id +
                 ", start_time=" + startTime +
                 ", end_time=" + endTime +
-                ", arrival_place='" + arrivalPlace + '\'' +
                 ", departure_place='" + departurePlace + '\'' +
+                ", arrival_place='" + arrivalPlace + '\'' +
                 ", price=" + price +
                 ", skill='" + skill + '\'' +
                 '}';
