@@ -13,7 +13,7 @@ public class Receipt {
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Purchase purchase;
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)//not nullable
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)//not nullable
     private Client client;
 
     //default constructor

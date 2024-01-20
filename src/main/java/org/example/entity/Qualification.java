@@ -29,7 +29,7 @@ public class Qualification {
     @Column(name = "type", nullable = false)
     private String type;
 
-    //implement lazy loading when read a company
+    //implement lazy loading when read a qualification
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
