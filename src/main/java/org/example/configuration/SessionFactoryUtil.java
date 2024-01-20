@@ -27,7 +27,9 @@ public class SessionFactoryUtil {
             configuration.addAnnotatedClass(Receipt.class);
 
             ServiceRegistry serviceRegistry =
-                    new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+                    new StandardServiceRegistryBuilder()
+                        .applySettings(configuration.getProperties())
+                        .build();
 
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
