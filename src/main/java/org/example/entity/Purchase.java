@@ -37,11 +37,21 @@ public class Purchase {
     //Validation constraint annotation
     @Positive//not necessary since we already have a similar constraint named @DecimalMin but for demo purposes it's okay
     @DecimalMin(
-        value = "5.00",
+        value = "1.60F",//EXAMPLES: Bus - 1.6BGN TICKET PRICE, Truck - 10BGN TOTAL
         message = "The price of the order has to be more than or equal to " + MIN_PRICE + " BGN"
     )
     @Column(name="price", nullable = false)
     private float price;
+
+//    unitType - people
+    //ako unitType === people, dali unitValue e integer
+    @Column(name = "unit_type", nullable = false)
+    private String unitType;
+
+    //unitValue - KG, GR, number
+    //dali seats ot Bus i unitValue sa sywmestimi, toest dali awtobusa ima dostatuchno mqsto
+    @Column(name = "unit_value", nullable = false)
+    private float unitValue;
 
     //implement lazy loading when read a purchase
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -57,7 +67,7 @@ public class Purchase {
 
     //implement lazy loading when read a purchase
     @OneToOne(mappedBy = "purchase", fetch = FetchType.LAZY)
-    private Receipt receipt;
+    private Receipt receipt;//5 * 1.6BGN
 
     //implement lazy loading when read a purchase
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

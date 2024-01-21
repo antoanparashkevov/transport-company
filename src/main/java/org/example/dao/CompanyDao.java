@@ -155,6 +155,7 @@ public class CompanyDao {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()){
             Transaction transaction = session.beginTransaction();
 
+            //HQL - Hibernate Query Language
             company = session.createQuery(
             "select c from Company c" +
                 " join fetch c.employees" +
@@ -177,6 +178,7 @@ public class CompanyDao {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()){
             Transaction transaction = session.beginTransaction();
 
+            //HQL - Hibernate Query Language
             employees = session.createQuery(
                 "select new org.example.dto.EmployeeDto(e.id, e.firstName, e.lastName, e.salary) from Employee e" +
                         " join e.company c" +

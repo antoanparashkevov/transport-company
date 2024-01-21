@@ -33,8 +33,7 @@ public class Vehicle {
     private List<Purchase> purchases;//telling that the relation between both tables is managed by the purchase table and the vehicle field
 
     //default constructor
-    public Vehicle() {
-    }
+    public Vehicle() {}
 
     //parametrized constructor
     public Vehicle(String registrationNumber, Company company) {
