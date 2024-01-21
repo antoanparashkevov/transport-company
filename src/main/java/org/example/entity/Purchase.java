@@ -63,6 +63,10 @@ public class Purchase {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Qualification qualification;
 
+    //implement lazy loading when read a purchase
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Employee employee;
+
     //default constructor
     public Purchase() {
     }
@@ -83,11 +87,11 @@ public class Purchase {
         return id;
     }
 
-    public LocalDate getStart_time() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
-    public LocalDate getEnd_time() {
+    public LocalDate getEndTime() {
         return endTime;
     }
 
@@ -123,6 +127,10 @@ public class Purchase {
         return qualification;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
     //GETTERS END
 
     //SETTERS START
@@ -131,11 +139,11 @@ public class Purchase {
         this.id = id;
     }
 
-    public void setStart_time(LocalDate startTime) {
+    public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
 
-    public void setEnd_time(LocalDate endTime) {
+    public void setEndTime(LocalDate endTime) {
         this.endTime = endTime;
     }
 
@@ -169,6 +177,10 @@ public class Purchase {
 
     public void setQualification(Qualification qualification) {
         this.qualification = qualification;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     //SETTERS END

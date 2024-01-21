@@ -34,6 +34,10 @@ public class Employee {
     @ManyToMany(mappedBy = "employees", fetch = FetchType.LAZY)
     private Set<Qualification> qualifications;
 
+    //implement lazy loading when read an employee
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    private Set<Purchase> purchases;
+
     //default constructor
     public Employee() {
     }
@@ -73,6 +77,10 @@ public class Employee {
         return qualifications;
     }
 
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
     //GETTERS END
 
     //SETTERS START
@@ -99,6 +107,10 @@ public class Employee {
 
     public void setQualifications(Set<Qualification> qualifications) {
         this.qualifications = qualifications;
+    }
+
+    public void setPurchases(Set<Purchase> purchases) {
+        this.purchases = purchases;
     }
 
     //SETTERS END
