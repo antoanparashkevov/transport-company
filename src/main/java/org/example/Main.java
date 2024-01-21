@@ -5,9 +5,7 @@ import org.example.configuration.SessionFactoryUtil;
 import org.example.dao.ClientDao;
 import org.example.dao.CompanyDao;
 import org.example.dao.EmployeeDao;
-import org.example.entity.Client;
-import org.example.entity.Company;
-import org.example.entity.Employee;
+import org.example.entity.*;
 
 import java.time.LocalDate;
 
@@ -107,11 +105,11 @@ public class Main {
         //CLIENT END
 
         //EMPLOYEE START
-        Company companyToWork1 = CompanyDao.getCompanyById(1);
-        Company companyToWork2 = CompanyDao.getCompanyById(2);
-        Company companyToWork3 = CompanyDao.getCompanyById(3);
-        Company companyToWork4 = CompanyDao.getCompanyById(4);
-        Company companyToWork5 = CompanyDao.getCompanyById(5);
+//        Company companyToWork1 = CompanyDao.getCompanyById(1);
+//        Company companyToWork2 = CompanyDao.getCompanyById(2);
+//        Company companyToWork3 = CompanyDao.getCompanyById(3);
+//        Company companyToWork4 = CompanyDao.getCompanyById(4);
+//        Company companyToWork5 = CompanyDao.getCompanyById(5);
 
 //        Employee employee1 = new Employee("Antoan", "Parashkevov", 1500.00F, companyToWork1);
 //        Employee employee2 = new Employee("Ivan", "Ivanov", 1400.00F, companyToWork2);
@@ -153,5 +151,62 @@ public class Main {
 //        EmployeeDao.deleteEmployee(employeeToDelete);
 
         //EMPLOYEE END
+
+        //PURCHASE START
+//        Vehicle vehicle1 =
+
+//        Company companyForPurchase1 = CompanyDao.getCompanyById(1);
+//        Company companyForPurchase2 = CompanyDao.getCompanyById(2);
+//        Company companyForPurchase3 = CompanyDao.getCompanyById(3);
+//        Company companyForPurchase4 = CompanyDao.getCompanyById(4);
+//        Company companyForPurchase5 = CompanyDao.getCompanyById(5);
+
+//        Purchase purchase1 = new Purchase(
+//                LocalDate.of(2024, 1, 20),
+//                LocalDate.of(2024, 1, 30),
+//                "Pleven",
+//                "Sofia",
+//                1300F,
+//
+//        );
+//        Purchase purchase2 = new Purchase("Ivan", "Ivanov", 1400.00F, companyToWork2);
+//        Purchase purchase3 = new Purchase("Petko", "Petkov", 1300.00F, companyToWork3);
+//        Purchase purchase4 = new Purchase("Svelozar", "Georgiev", 1200.00F, companyToWork4);
+//        Purchase purchase5 = new Purchase("Pavel", "Dragano", 1100.00F, companyToWork5);
+
+        //create an purchase
+//        PurchaseDao.createPurchase(purchase1);
+//        PurchaseDao.createPurchase(purchase2);
+//        PurchaseDao.createPurchase(purchase3);
+//        PurchaseDao.createPurchase(purchase4);
+//        PurchaseDao.createPurchase(purchase5);
+
+        //read an purchase (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(PurchaseDao.getPurchaseById(1));
+//        System.out.println(PurchaseDao.getPurchaseById(2));
+//        System.out.println(PurchaseDao.getPurchaseById(3));
+//        System.out.println(PurchaseDao.getPurchaseById(4));
+//        System.out.println(PurchaseDao.getPurchaseById(5));
+
+        //read all purchases
+//        System.out.println(PurchaseDao.getAllPurchases());
+
+        //update an purchase
+        //means we want to UPDATE the record with primary key (id) 1.
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//        Company newCompanyToWork = CompanyDao.getCompanyById(2);
+//        Purchase newPurchase = new Purchase();
+//        newEmployee.setFirstName("AntoanNew");
+//        newEmployee.setLastName("ParashkevovNew");
+//        newEmployee.setSalary(1300F);
+//        newEmployee.setCompany(newCompanyToWork);
+//        newEmployee.setId(1);
+//        PurchaseDao.updateEmployee(newEmployee);
+
+        //delete an purchase
+//        Purchase purchaseToDelete = PurchaseDao.getPurchaseById(1);
+//        PurchaseDao.deleteEmployee(purchaseToDelete);
+
+        //PURCHASE END
     }
 }
