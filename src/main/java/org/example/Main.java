@@ -3,6 +3,7 @@ package org.example;
 import org.example.configuration.SessionFactoryUtil;
 
 import org.example.dao.CompanyDao;
+import org.example.entity.Client;
 import org.example.entity.Company;
 
 import java.time.LocalDate;
@@ -50,11 +51,14 @@ public class Main {
 //      System.out.println(CompanyDao.companyFindByCompanyName("VM"));//no result found for query
 //      System.out.println(CompanyDao.companyFindByCompanyName("SAP"));
 
-      System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("S"));
+//      System.out.println(CompanyDao.companyFindByCompanyNameStartingWith("S"));
 
 //      System.out.println(CompanyDao.getCompanyEmployees(1));
 
 //      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
+
+//        Client client = new Client("Antoan", "Parashkevov", "0877268727");
+//        System.out.println(client);
 
 
     }

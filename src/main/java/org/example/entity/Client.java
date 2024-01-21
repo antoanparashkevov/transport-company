@@ -2,6 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.Set;
 
@@ -21,6 +22,10 @@ public class Client {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Pattern(regexp = "^\\d{10}$", message = "Phone number must be 10 digits!")//Validation constraint annotation
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     //implement lazy loading when read a client
     @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
     private Set<Purchase> purchases;
@@ -36,9 +41,10 @@ public class Client {
     }
 
     //parametrized constructor
-    public Client(String firstName, String lastName) {
+    public Client(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
     }
 
     //GETTERS START
@@ -53,6 +59,10 @@ public class Client {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public Set<Purchase> getPurchases() {
@@ -79,6 +89,10 @@ public class Client {
         this.lastName = lastName;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public void setPurchases(Set<Purchase> purchases) {
         this.purchases = purchases;
     }
@@ -95,6 +109,7 @@ public class Client {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", phone_number='" + phoneNumber + '\'' +
                 '}';
     }
 }
