@@ -38,4 +38,13 @@ public class CreateCompanyDto {
     }
 
     //SETTERS END
+
+
+    @Override
+    public String toString() {
+        return "CreateCompanyDto{" +
+                "companyName='" + companyName + '\'' +
+                ", foundationDate=" + foundationDate +
+                '}';
+    }
 }

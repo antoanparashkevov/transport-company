@@ -17,4 +17,11 @@ public class UpdateCompanyDto {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    @Override
+    public String toString() {
+        return "UpdateCompanyDto{" +
+                "companyName='" + companyName + '\'' +
+                '}';
+    }
 }
