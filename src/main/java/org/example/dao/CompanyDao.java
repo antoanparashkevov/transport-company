@@ -172,10 +172,11 @@ public class CompanyDao {
         return company.getEmployees();//will call the Employee toString()
     }
 
+    //retrieves a list of employees of a specified company id
     public static List<EmployeeDto> getCompanyEmployeesDTO(long id) {
         List<EmployeeDto> employees;
 
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()){
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
             //HQL - Hibernate Query Language
@@ -194,5 +195,8 @@ public class CompanyDao {
 
         return employees;//will call the EmployeeDTO toString()
     }
+
+    //retrieves a list of vehicles of a specified company id
+
 
 }

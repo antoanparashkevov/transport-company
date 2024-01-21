@@ -2,15 +2,16 @@ package org.example.dto;
 
 import java.time.LocalDate;
 
-//We describe only the fields that are required in order to create a company
-public class CreateCompanyDto {
+public class CompanyDto {
 
     private String companyName;
 
     private LocalDate foundationDate;
 
-    //parametrized constructor
-    public CreateCompanyDto(String companyName, LocalDate foundationDate) {
+    public CompanyDto() {
+    }
+
+    public CompanyDto(String companyName, LocalDate foundationDate) {
         this.companyName = companyName;
         this.foundationDate = foundationDate;
     }
@@ -41,7 +42,7 @@ public class CreateCompanyDto {
 
     @Override
     public String toString() {
-        return "CreateCompanyDto{" +
+        return "CompanyDto{" +
                 "companyName='" + companyName + '\'' +
                 ", foundationDate=" + foundationDate +
                 '}';
