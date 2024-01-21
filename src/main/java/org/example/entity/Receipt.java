@@ -15,7 +15,7 @@ public class Receipt {
     private Client client;
 
     //implement lazy loading when read a company
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Purchase purchase;
 
     //default constructor

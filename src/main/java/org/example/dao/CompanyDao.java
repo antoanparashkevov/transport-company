@@ -10,6 +10,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
 import org.example.configuration.SessionFactoryUtil;
+import org.example.dto.CompanyProfitDto;
 import org.example.dto.EmployeeDto;
 import org.example.dto.VehicleDto;
 import org.example.entity.Company;
@@ -219,6 +220,27 @@ public class CompanyDao {
         }
         return vehicles;
     }
+
+    //retrieves the profit of a specified company id
+//    public static List<CompanyProfitDto> getCompanyByProfitDto(long id ) {
+//        List<CompanyProfitDto> profits;
+//
+//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+//            Transaction transaction = session.beginTransaction();
+//            //TODO: check why sum() throws an error
+//            profits = session.createQuery(" select new org.example.dto.CompanyProfitDto(c.id, c.companyName, sum(p.price)) from Company c " +
+//                   // " join p.company c " +
+//                    " join c.purchases p " +
+//                    " join p.receipts r" +
+//                    " where r.id is not null and c.id = :id" +
+//                    " group by c.id, c.companyName "
+//                    , CompanyProfitDto.class)
+//                    .setParameter("id", id)
+//                    .getResultList();
+//            transaction.commit();
+//        }
+//        return profits;
+//    }
 
     //TODO: filterByName, filterByIncome, getCompanyIncomeForPeriod
 

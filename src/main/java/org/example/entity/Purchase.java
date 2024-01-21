@@ -66,8 +66,8 @@ public class Purchase {
     private List<Client> clients;
 
     //implement lazy loading when read a purchase
-    @OneToOne(mappedBy = "purchase", fetch = FetchType.LAZY)
-    private Receipt receipt;//5 * 1.6BGN
+    @OneToMany(mappedBy = "purchase", fetch = FetchType.LAZY)
+    private List<Receipt> receipts;//5 * 1.6BGN
 
     //implement lazy loading when read a purchase
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -142,8 +142,8 @@ public class Purchase {
         return clients;
     }
 
-    public Receipt getReceipt() {
-        return receipt;
+    public List<Receipt> getReceipts() {
+        return receipts;
     }
 
     public Qualification getQualification() {
@@ -202,8 +202,8 @@ public class Purchase {
         this.clients = clients;
     }
 
-    public void setReceipt(Receipt receipt) {
-        this.receipt = receipt;
+    public void setReceipts(List<Receipt> receipts) {
+        this.receipts = receipts;
     }
 
     public void setQualification(Qualification qualification) {
