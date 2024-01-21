@@ -22,6 +22,11 @@ public class Receipt {
     public Receipt() {
     }
 
+    public Receipt(Client client, Purchase purchase) {
+        this.client = client;
+        this.purchase = purchase;
+    }
+
     //GETTERS START
 
     public long getId() {

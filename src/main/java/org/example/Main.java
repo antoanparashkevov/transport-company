@@ -235,7 +235,7 @@ public class Main {
         //read all qualifications
 //        System.out.println(QualificationDao.getAllQualifications());
 
-        //update an qualification
+        //update a qualification
         //means we want to UPDATE the record with primary key (id) 1.
         //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
 //        Qualification newQualification = new Qualification();
@@ -248,5 +248,45 @@ public class Main {
 //        QualificationDao.deleteQualification(qualificationToDelete);
 
         //QUALIFICATION END
+
+        //RECEIPT START
+
+//        Receipt receipt1 = new Receipt();
+//        Receipt receipt2 = new Receipt();
+//        Receipt receipt3 = new Receipt();
+//        Receipt receipt4 = new Receipt();
+//        Receipt receipt5 = new Receipt();
+
+        //create an receipt
+//        ReceiptDao.createReceipt(receipt1);
+//        ReceiptDao.createReceipt(receipt2);
+//        ReceiptDao.createReceipt(receipt3);
+//        ReceiptDao.createReceipt(receipt4);
+//        ReceiptDao.createReceipt(receipt5);
+
+        //read an receipt (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(ReceiptDao.getReceiptById(1));
+//        System.out.println(ReceiptDao.getReceiptById(2));
+//        System.out.println(ReceiptDao.getReceiptById(3));
+//        System.out.println(ReceiptDao.getReceiptById(4));
+//        System.out.println(ReceiptDao.getReceiptById(5));
+
+        //read all receipts
+//        System.out.println(ReceiptDao.getAllReceipts());
+
+        //update a receipt
+        //means we want to UPDATE the record with primary key (id) 1.
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//        Receipt newReceipt = new Receipt();
+//        newReceipt.setClient();
+//        newReceipt.setPurchase();
+//        newReceipt.setId(1);
+//        ReceiptDao.updateReceipt(newReceipt);
+
+        //delete an receipt
+//        Receipt receiptToDelete = ReceiptDao.getReceiptById(1);
+//        ReceiptDao.deleteReceipt(receiptToDelete);
+
+        //RECEIPT END
     }
 }
