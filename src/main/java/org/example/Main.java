@@ -2,11 +2,9 @@ package org.example;
 
 import org.example.configuration.SessionFactoryUtil;
 
-import org.example.dao.ClientDao;
-import org.example.dao.CompanyDao;
-import org.example.dao.EmployeeDao;
-import org.example.dao.QualificationDao;
+import org.example.dao.*;
 import org.example.entity.*;
+import org.example.entity.enumeration.CapacityUnit;
 
 import java.time.LocalDate;
 
@@ -60,7 +58,7 @@ public class Main {
 
 //      System.out.println(CompanyDao.getCompanyEmployees(1));
 
-      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
+//      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
 
         //COMPANY END
 
@@ -289,8 +287,96 @@ public class Main {
 
         //RECEIPT END
 
-        //VEHICLE START
+        //BUS START
 
-        //VEHICLE END
+//        Company companyForBus1 = CompanyDao.getCompanyById(1);
+//        Company companyForBus2 = CompanyDao.getCompanyById(2);
+//        Company companyForBus3 = CompanyDao.getCompanyById(3);
+//        Company companyForBus4 = CompanyDao.getCompanyById(4);
+//        Company companyForBus5 = CompanyDao.getCompanyById(5);
+
+//        Bus bus1 = new Bus("RA6246KS", companyForBus1, 10);
+//        Bus bus2 = new Bus("SV6246KS", companyForBus2, 20);
+//        Bus bus3 = new Bus("WA6246KS", companyForBus3, 30);
+//        Bus bus4 = new Bus("PW6246KS", companyForBus4, 40);
+//        Bus bus5 = new Bus("OW6246KS", companyForBus5, 50);
+
+        //create a bus
+//        BusDao.createBus(bus1);
+//        BusDao.createBus(bus2);
+//        BusDao.createBus(bus3);
+//        BusDao.createBus(bus4);
+//        BusDao.createBus(bus5);
+
+        //read a bus (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(BusDao.getBusById(1));
+//        System.out.println(BusDao.getBusById(2));
+//        System.out.println(BusDao.getBusById(3));
+//        System.out.println(BusDao.getBusById(4));
+//        System.out.println(BusDao.getBusById(5));
+
+        //read all busses
+//        System.out.println(BusDao.getAllBuss());
+
+        //update a bus
+        //means we want to UPDATE the record with primary key (id) 1.
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//        Bus newBus = new Bus();
+//        newBus.setClient();
+//        newBus.setPurchase();
+//        newBus.setId(1);
+//        BusDao.updateBus(newBus);
+
+        //delete an bus
+//        Bus busToDelete = BusDao.getBusById(1);
+//        BusDao.deleteBus(busToDelete);
+
+        //BUS END
+
+        //TRUCK START
+
+//        Company companyForTruck1 = CompanyDao.getCompanyById(1);
+//        Company companyForTruck2 = CompanyDao.getCompanyById(2);
+//        Company companyForTruck3 = CompanyDao.getCompanyById(3);
+//        Company companyForTruck4 = CompanyDao.getCompanyById(4);
+//        Company companyForTruck5 = CompanyDao.getCompanyById(5);
+
+//        Truck truck1 = new Truck("RA6246KS", companyForTruck1, CapacityUnit.KG, 10);
+//        Truck truck2 = new Truck("SV6246KS", companyForTruck2, CapacityUnit.ML, 20);
+//        Truck truck3 = new Truck("WA6246KS", companyForTruck3, CapacityUnit.INCH, 30);
+//        Truck truck4 = new Truck("PW6246KS", companyForTruck4, CapacityUnit.POUND, 40);
+//        Truck truck5 = new Truck("OW6246KS", companyForTruck5, CapacityUnit.L, 50);
+
+        //create a truck
+//        TruckDao.createTruck(truck1);
+//        TruckDao.createTruck(truck2);
+//        TruckDao.createTruck(truck3);
+//        TruckDao.createTruck(truck4);
+//        TruckDao.createTruck(truck5);
+
+        //read a truck (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(TruckDao.getTruckById(1));
+//        System.out.println(TruckDao.getTruckById(2));
+//        System.out.println(TruckDao.getTruckById(3));
+//        System.out.println(TruckDao.getTruckById(4));
+//        System.out.println(TruckDao.getTruckById(5));
+
+        //read all trucks
+//        System.out.println(TruckDao.getAllTrucks());
+
+        //update a truck
+        //means we want to UPDATE the record with primary key (id) 1.
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//        Truck newTruck = new Truck();
+//        newTruck.setClient();
+//        newTruck.setPurchase();
+//        newTruck.setId(1);
+//        TruckDao.updateTruck(newTruck);
+
+        //delete an truck
+//        Truck truckToDelete = TruckDao.getTruckById(1);
+//        TruckDao.deleteTruck(truckToDelete);
+
+        //TRUCK END
     }
 }
