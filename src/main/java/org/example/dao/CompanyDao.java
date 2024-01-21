@@ -11,9 +11,11 @@ import jakarta.persistence.criteria.Root;
 
 import org.example.configuration.SessionFactoryUtil;
 import org.example.dto.EmployeeDto;
+import org.example.dto.VehicleDto;
 import org.example.entity.Company;
 
 import org.example.entity.Employee;
+import org.example.entity.Vehicle;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -197,6 +199,25 @@ public class CompanyDao {
     }
 
     //retrieves a list of vehicles of a specified company id
+    public static List<VehicleDto> getCompanyVehiclesDTO(long id) {
+        List<VehicleDto> vehicles;
 
+        try(Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            //HQL - Hibernate Query Language
+            vehicles = session.createQuery(
+                    "select new org.example.dto.VehicleDto(v.id, v.registrationNumber, c.companyName) from Vehicle v" +
+                            " join v.company c" +
+                            " where c.id = :id",
+                    VehicleDto.class
+            )
+            .setParameter("id", id)
+            .getResultList();
+
+            transaction.commit();
+        }
+        return vehicles;
+    }
 
 }
