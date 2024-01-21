@@ -58,12 +58,9 @@ public class Company {
     }
 
     //parametrized constructor
-    public Company(String companyName, LocalDate foundationDate, Set<Employee> employees, Set<Vehicle> vehicles, Set<Purchase> purchases) {
+    public Company(String companyName, LocalDate foundationDate) {
         this.companyName = companyName;
         this.foundationDate = foundationDate;
-        this.employees = employees;
-        this.vehicles = vehicles;
-        this.purchases = purchases;
     }
 
     //GETTERS START
