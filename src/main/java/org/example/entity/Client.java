@@ -22,6 +22,7 @@ public class Client {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    //In Java, you need to escape the backslash with \. Therefore, we use \\ to represent a single backslash
     @Pattern(regexp = "^\\d{10}$", message = "Phone number must be 10 digits!")//Validation constraint annotation
     @Column(name = "phone_number")
     private String phoneNumber;

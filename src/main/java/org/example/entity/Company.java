@@ -41,12 +41,13 @@ public class Company {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
-    //TODO: vehicles relationship of type one to many
-    // (one vehicle - one company, one company - many vehicles)
-    // the foreign key should be located at the vehicle table and the company field.
-    //@OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    //private Set<Vehicle> vehicles;
+    //creating bidirectional relationship between the vehicle and the company
+    //the relation between both tables is managed by the vehicle table and the company field
+    //implement lazy loading when read a company
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    private Set<Vehicle> vehicles;
 
+    //creating bidirectional relationship between the purchase and the company
     //the relation between both tables is managed by the purchase table and the company field
     //implement lazy loading when read a company
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)

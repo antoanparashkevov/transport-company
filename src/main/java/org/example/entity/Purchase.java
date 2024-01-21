@@ -43,15 +43,9 @@ public class Purchase {
     @Column(name="price", nullable = false)
     private float price;
 
-    //Validation constraint annotation
-    @NotBlank(message = "The skill for the order cannot be blank!")
-    @Column(name = "skill", nullable = false)
-    private String skill;
-
-    //TODO: vehicle relationship of type many to one
-    // (one vehicle - many purchases, one purchase - one vehicle)
-    //@ManyToOne(optional = false, fetch = FetchType.LAZY)
-    //private Vehicle vehicle;
+    //implement lazy loading when read a purchase
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Vehicle vehicle;
 
     //implement lazy loading when read a purchase
     @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
@@ -74,13 +68,12 @@ public class Purchase {
     }
 
     //parametrized constructor
-    public Purchase(LocalDate startTime, LocalDate endTime, String arrivalPlace, String departurePlace, float price, String skill, List<Client> clients) {
+    public Purchase(LocalDate startTime, LocalDate endTime, String arrivalPlace, String departurePlace, float price, List<Client> clients) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.arrivalPlace = arrivalPlace;
         this.departurePlace = departurePlace;
         this.price = price;
-        this.skill = skill;
         this.clients = clients;
     }
 
@@ -110,8 +103,8 @@ public class Purchase {
         return price;
     }
 
-    public String getSkill() {
-        return skill;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
     public Company getCompany() {
@@ -158,8 +151,8 @@ public class Purchase {
         this.price = price;
     }
 
-    public void setSkill(String skill) {
-        this.skill = skill;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public void setCompany(Company company) {
@@ -189,7 +182,6 @@ public class Purchase {
                 ", departure_place='" + departurePlace + '\'' +
                 ", arrival_place='" + arrivalPlace + '\'' +
                 ", price=" + price +
-                ", skill='" + skill + '\'' +
                 '}';
     }
 }
