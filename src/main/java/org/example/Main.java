@@ -264,7 +264,7 @@ public class Main {
 //        ReceiptDao.createReceipt(receipt4);
 //        ReceiptDao.createReceipt(receipt5);
 
-        //read an receipt (The ORM requires to have a default constructor inside the Company Entity
+        //read a receipt (The ORM requires to have a default constructor inside the Company Entity
 //        System.out.println(ReceiptDao.getReceiptById(1));
 //        System.out.println(ReceiptDao.getReceiptById(2));
 //        System.out.println(ReceiptDao.getReceiptById(3));
@@ -288,5 +288,9 @@ public class Main {
 //        ReceiptDao.deleteReceipt(receiptToDelete);
 
         //RECEIPT END
+
+        //VEHICLE START
+
+        //VEHICLE END
     }
 }
