@@ -178,19 +178,19 @@ public class CompanyDao {
             Transaction transaction = session.beginTransaction();
 
             employees = session.createQuery(
-                            "select new dto.EmployeeDto(e.id, e.name) from Employee e" +
-                                    " join e.company c" +
-                                    " where c.id = :id",
-                            EmployeeDto.class
-                    )
-                    .setParameter("id", id)
-                    .getResultList();
+                "select new org.example.dto.EmployeeDto(e.id, e.firstName, e.lastName, e.salary) from Employee e" +
+                        " join e.company c" +
+                        " where c.id = :id",
+                EmployeeDto.class
+            )
+            .setParameter("id", id)
+            .getResultList();
 
             transaction.commit();
 
         }
 
-        return employees;//will call the Employee toString()
+        return employees;//will call the EmployeeDTO toString()
     }
 
 }

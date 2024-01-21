@@ -60,7 +60,7 @@ public class Main {
 
 //      System.out.println(CompanyDao.getCompanyEmployees(1));
 
-//      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
+      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
 
         //COMPANY END
 

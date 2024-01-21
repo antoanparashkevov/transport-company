@@ -5,7 +5,16 @@ public class UpdateCompanyDto {
 
     private String companyName;
 
+    //parametrized constructor
     public UpdateCompanyDto(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
 }
