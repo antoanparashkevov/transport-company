@@ -220,4 +220,6 @@ public class CompanyDao {
         return vehicles;
     }
 
+    //TODO: filterByName, filterByIncome, getCompanyIncomeForPeriod
+
 }
