@@ -5,6 +5,7 @@ import org.example.configuration.SessionFactoryUtil;
 import org.example.dao.ClientDao;
 import org.example.dao.CompanyDao;
 import org.example.dao.EmployeeDao;
+import org.example.dao.QualificationDao;
 import org.example.entity.*;
 
 import java.time.LocalDate;
@@ -208,5 +209,44 @@ public class Main {
 //        PurchaseDao.deleteEmployee(purchaseToDelete);
 
         //PURCHASE END
+
+        //QUALIFICATION START
+
+//        Qualification qualification1 = new Qualification("special_cargo");
+//        Qualification qualification2 = new Qualification("dangerous_cargo");
+//        Qualification qualification3 = new Qualification("passenger_transport");
+//        Qualification qualification4 = new Qualification("heavy_cargo");
+//        Qualification qualification5 = new Qualification("oversied_cargo");
+
+        //create an qualification
+//        QualificationDao.createQualification(qualification1);
+//        QualificationDao.createQualification(qualification2);
+//        QualificationDao.createQualification(qualification3);
+//        QualificationDao.createQualification(qualification4);
+//        QualificationDao.createQualification(qualification5);
+
+        //read an qualification (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(QualificationDao.getQualificationById(1));
+//        System.out.println(QualificationDao.getQualificationById(2));
+//        System.out.println(QualificationDao.getQualificationById(3));
+//        System.out.println(QualificationDao.getQualificationById(4));
+//        System.out.println(QualificationDao.getQualificationById(5));
+
+        //read all qualifications
+//        System.out.println(QualificationDao.getAllQualifications());
+
+        //update an qualification
+        //means we want to UPDATE the record with primary key (id) 1.
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//        Qualification newQualification = new Qualification();
+//        newQualification.setType("special_cargo_new");
+//        newQualification.setId(1);
+//        QualificationDao.updateQualification(newQualification);
+
+        //delete an qualification
+//        Qualification qualificationToDelete = QualificationDao.getQualificationById(1);
+//        QualificationDao.deleteQualification(qualificationToDelete);
+
+        //QUALIFICATION END
     }
 }

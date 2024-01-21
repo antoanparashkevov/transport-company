@@ -1,7 +1,7 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Set;
 
@@ -12,20 +12,12 @@ import java.util.Set;
 )
 public class Qualification {
 
-    //these two constants should be static unless you want to be added as fields to the table
-    private static final int MIN_TYPE_LENGTH = 3;
-    private static final int MAX_TYPE_LENGTH = 10;
-
     @Id//This annotation tells that the field below should be the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Auto Increment (AI) property
     private long id;
 
     //Validation constraint annotation
-    @Size(
-        min = MIN_TYPE_LENGTH,
-        max = MAX_TYPE_LENGTH,
-        message = "The qualification type should be between " + MIN_TYPE_LENGTH + " and no longer than " + MAX_TYPE_LENGTH + " characters long!"
-    )
+    @NotBlank(message = "You must provide a qualification type!")
     @Column(name = "type", nullable = false)
     private String type;
 
@@ -41,9 +33,8 @@ public class Qualification {
     }
 
     //parametrized constructor
-    public Qualification(String type, Set<Employee> employees) {
+    public Qualification(String type) {
         this.type = type;
-        this.employees = employees;
     }
 
     //GETTERS START
