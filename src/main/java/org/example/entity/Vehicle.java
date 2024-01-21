@@ -42,7 +42,6 @@ public class Vehicle {
         this.company = company;
     }
 
-
     //GETTERS START
 
     public long getId() {
@@ -82,6 +81,7 @@ public class Vehicle {
     }
 
     //SETTERS END
+
     @Override
     public String toString() {
         return "Vehicle{" +

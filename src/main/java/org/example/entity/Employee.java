@@ -43,13 +43,15 @@ public class Employee {
     }
 
     //parametrized constructor
-    public Employee(String firstName, String lastName, float salary, Company company, Set<Qualification> qualifications) {
+    public Employee(String firstName, String lastName, float salary, Company company, Set<Qualification> qualifications, Set<Purchase> purchases) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
         this.company = company;
         this.qualifications = qualifications;
+        this.purchases = purchases;
     }
+
 
     //GETTERS START
 
@@ -122,7 +124,6 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
-                ", company=" + company +
                 '}';
     }
 }

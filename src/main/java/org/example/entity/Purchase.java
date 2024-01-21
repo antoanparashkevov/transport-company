@@ -72,13 +72,17 @@ public class Purchase {
     }
 
     //parametrized constructor
-    public Purchase(LocalDate startTime, LocalDate endTime, String arrivalPlace, String departurePlace, float price, List<Client> clients) {
+
+    public Purchase(LocalDate startTime, LocalDate endTime, String departurePlace, String arrivalPlace, float price, Vehicle vehicle, Company company, Qualification qualification, Employee employee) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.arrivalPlace = arrivalPlace;
         this.departurePlace = departurePlace;
+        this.arrivalPlace = arrivalPlace;
         this.price = price;
-        this.clients = clients;
+        this.vehicle = vehicle;
+        this.company = company;
+        this.qualification = qualification;
+        this.employee = employee;
     }
 
     //GETTERS START
