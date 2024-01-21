@@ -355,14 +355,25 @@ public class Main {
         //QUALIFICATION END
 
         //RECEIPT START
+//        Client clientForReceipt1 = ClientDao.getClientById(1);
+//        Client clientForReceipt2 = ClientDao.getClientById(2);
+//        Client clientForReceipt3 = ClientDao.getClientById(3);
+//        Client clientForReceipt4 = ClientDao.getClientById(4);
+//        Client clientForReceipt5 = ClientDao.getClientById(5);
 
-//        Receipt receipt1 = new Receipt();
-//        Receipt receipt2 = new Receipt();
-//        Receipt receipt3 = new Receipt();
-//        Receipt receipt4 = new Receipt();
-//        Receipt receipt5 = new Receipt();
+//        Purchase purchaseForReceipt1 = PurchaseDao.getPurchaseById(1);
+//        Purchase purchaseForReceipt2 = PurchaseDao.getPurchaseById(2);
+//        Purchase purchaseForReceipt3 = PurchaseDao.getPurchaseById(3);
+//        Purchase purchaseForReceipt4 = PurchaseDao.getPurchaseById(4);
+//        Purchase purchaseForReceipt5 = PurchaseDao.getPurchaseById(5);
 
-        //create an receipt
+//        Receipt receipt1 = new Receipt(clientForReceipt1, purchaseForReceipt1);
+//        Receipt receipt2 = new Receipt(clientForReceipt2, purchaseForReceipt2);
+//        Receipt receipt3 = new Receipt(clientForReceipt3, purchaseForReceipt3);
+//        Receipt receipt4 = new Receipt(clientForReceipt4, purchaseForReceipt4);
+//        Receipt receipt5 = new Receipt(clientForReceipt5, purchaseForReceipt5);
+
+        //create a receipt
 //        ReceiptDao.createReceipt(receipt1);
 //        ReceiptDao.createReceipt(receipt2);
 //        ReceiptDao.createReceipt(receipt3);
@@ -382,10 +393,12 @@ public class Main {
         //update a receipt
         //means we want to UPDATE the record with primary key (id) 1.
         //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the ReceiptsDao class
+//        Client newClientForReceipt = ClientDao.getClientById(3);
+//        Purchase newPurchaseForReceipt = PurchaseDao.getPurchaseById(3);
 //        Receipt newReceipt = new Receipt();
-//        newReceipt.setClient();
-//        newReceipt.setPurchase();
-//        newReceipt.setId(1);
+//        newReceipt.setClient(newClientForReceipt);
+//        newReceipt.setPurchase(newPurchaseForReceipt);
+//        newReceipt.setId(2);
 //        ReceiptDao.updateReceipt(newReceipt);
 
         //delete an receipt
