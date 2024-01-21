@@ -53,17 +53,21 @@ public class Purchase {
     //@ManyToOne(optional = false, fetch = FetchType.LAZY)
     //private Vehicle vehicle;
 
-    //implement lazy loading when read a company
+    //implement lazy loading when read a purchase
     @ManyToOne(optional = false, fetch = FetchType.LAZY)//make this field non-nullable
     private Company company;
 
-    //implement lazy loading when read a company
+    //implement lazy loading when read a purchase
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Client> clients;
 
-    //implement lazy loading when read a company
+    //implement lazy loading when read a purchase
     @OneToOne(mappedBy = "purchase", fetch = FetchType.LAZY)
     private Receipt receipt;
+
+    //implement lazy loading when read a purchase
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Qualification qualification;
 
     //default constructor
     public Purchase() {
@@ -122,6 +126,10 @@ public class Purchase {
         return receipt;
     }
 
+    public Qualification getQualification() {
+        return qualification;
+    }
+
     //GETTERS END
 
     //SETTERS START
@@ -164,6 +172,10 @@ public class Purchase {
 
     public void setReceipt(Receipt receipt) {
         this.receipt = receipt;
+    }
+
+    public void setQualification(Qualification qualification) {
+        this.qualification = qualification;
     }
 
     //SETTERS END

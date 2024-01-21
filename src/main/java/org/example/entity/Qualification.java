@@ -33,6 +33,9 @@ public class Qualification {
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Employee> employees;
 
+    @OneToMany(mappedBy = "qualification", fetch = FetchType.LAZY)
+    private Set<Purchase> purchases;
+
     //default constructor
     public Qualification() {
     }
@@ -57,6 +60,10 @@ public class Qualification {
         return employees;
     }
 
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
     //GETTERS END
 
     //SETTERS START
@@ -71,6 +78,10 @@ public class Qualification {
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
+    }
+
+    public void setPurchases(Set<Purchase> purchases) {
+        this.purchases = purchases;
     }
 
     //SETTERS END
