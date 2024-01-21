@@ -36,7 +36,7 @@ public class BusDao {
     }
 
     //read all
-    public static List<Bus> getAllBusses() {
+    public static List<Bus> getAllBuses() {
         List<Bus> busses;
 
         try(Session session = SessionFactoryUtil.getSessionFactory().openSession()) {

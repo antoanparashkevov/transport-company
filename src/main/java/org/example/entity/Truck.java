@@ -52,7 +52,7 @@ public class Truck extends Vehicle {
     public String toString() {
         return "Truck{" +
                 "unit=" + unit +
-                "capacity=" + capacity +
+                ", capacity=" + capacity +
                 "} " + super.toString();
     }
 }

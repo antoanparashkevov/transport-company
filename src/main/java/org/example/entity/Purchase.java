@@ -38,7 +38,7 @@ public class Purchase {
     //Validation constraint annotation
     @Positive//not necessary since we already have a similar constraint named @DecimalMin but for demo purposes it's okay
     @DecimalMin(
-        value = "1.60F",//EXAMPLES: Bus - 1.6BGN TICKET PRICE, Truck - 10BGN TOTAL
+        value = "1.60",//EXAMPLES: Bus - 1.6BGN TICKET PRICE, Truck - 10BGN TOTAL
         message = "The price of the order has to be more than or equal to " + MIN_PRICE + " BGN"
     )
     @Column(name="price", nullable = false)

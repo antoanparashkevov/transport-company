@@ -5,6 +5,7 @@ import org.example.configuration.SessionFactoryUtil;
 import org.example.dao.*;
 import org.example.entity.*;
 import org.example.entity.enumeration.CapacityUnit;
+import org.example.entity.enumeration.PurchaseUnitType;
 
 import java.time.LocalDate;
 
@@ -89,7 +90,7 @@ public class Main {
 
         //update a client
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the ClientDao class
 //          Client newClient = new Client();
 //          newClient.setFirstName("AntoanNew");
 //          newClient.setLastName("ParashkevovNew");
@@ -135,7 +136,7 @@ public class Main {
 
         //update an employee
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the EmployeeDao class
 //        Company newCompanyToWork = CompanyDao.getCompanyById(2);
 //        Employee newEmployee = new Employee();
 //        newEmployee.setFirstName("AntoanNew");
@@ -152,59 +153,165 @@ public class Main {
         //EMPLOYEE END
 
         //PURCHASE START
-//        Vehicle vehicle1 =
+
+//        Bus busForPurchase1 = BusDao.getBusById(7);
+//        Bus busForPurchase2 = BusDao.getBusById(8);
+//        Bus busForPurchase3 = BusDao.getBusById(9);
+
+//        Truck truckForPurchase4 = TruckDao.getTruckById(2);
+//        Truck truckForPurchase5 = TruckDao.getTruckById(3);
+//        Truck truckForPurchase6 = TruckDao.getTruckById(4);
 
 //        Company companyForPurchase1 = CompanyDao.getCompanyById(1);
 //        Company companyForPurchase2 = CompanyDao.getCompanyById(2);
 //        Company companyForPurchase3 = CompanyDao.getCompanyById(3);
 //        Company companyForPurchase4 = CompanyDao.getCompanyById(4);
 //        Company companyForPurchase5 = CompanyDao.getCompanyById(5);
+//        Company companyForPurchase6 = CompanyDao.getCompanyById(5);
+
+//        Qualification qualificationForPurchase1 = QualificationDao.getQualificationById(1);
+//        Qualification qualificationForPurchase2 = QualificationDao.getQualificationById(2);
+//        Qualification qualificationForPurchase3 = QualificationDao.getQualificationById(3);
+//        Qualification qualificationForPurchase4 = QualificationDao.getQualificationById(4);
+//        Qualification qualificationForPurchase5 = QualificationDao.getQualificationById(5);
+//        Qualification qualificationForPurchase6 = QualificationDao.getQualificationById(1);
+
+//        Employee employeeForPurchase1 = EmployeeDao.getEmployeeById(1);
+//        Employee employeeForPurchase2 = EmployeeDao.getEmployeeById(2);
+//        Employee employeeForPurchase3 = EmployeeDao.getEmployeeById(3);
+//        Employee employeeForPurchase4 = EmployeeDao.getEmployeeById(4);
+//        Employee employeeForPurchase5 = EmployeeDao.getEmployeeById(5);
+//        Employee employeeForPurchase6 = EmployeeDao.getEmployeeById(5);
 
 //        Purchase purchase1 = new Purchase(
-//                LocalDate.of(2024, 1, 20),
-//                LocalDate.of(2024, 1, 30),
-//                "Pleven",
-//                "Sofia",
-//                1300F,
-//
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//            "Pleven",
+//            "Sofia",
+//            1300F,
+//            PurchaseUnitType.PEOPLE,
+//            20,
+//            busForPurchase1,
+//            companyForPurchase1,
+//            qualificationForPurchase1,
+//            employeeForPurchase1
 //        );
-//        Purchase purchase2 = new Purchase("Ivan", "Ivanov", 1400.00F, companyToWork2);
-//        Purchase purchase3 = new Purchase("Petko", "Petkov", 1300.00F, companyToWork3);
-//        Purchase purchase4 = new Purchase("Svelozar", "Georgiev", 1200.00F, companyToWork4);
-//        Purchase purchase5 = new Purchase("Pavel", "Dragano", 1100.00F, companyToWork5);
-
-        //create an purchase
+//
+//        Purchase purchase2 = new Purchase(
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//            "Pleven",
+//            "Sofia",
+//            1300F,
+//            PurchaseUnitType.PEOPLE,
+//            20,
+//            busForPurchase2,
+//            companyForPurchase2,
+//            qualificationForPurchase2,
+//            employeeForPurchase2
+//        );
+//
+//        Purchase purchase3 = new Purchase(
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//            "Pleven",
+//            "Sofia",
+//            1300F,
+//            PurchaseUnitType.PEOPLE,
+//            20,
+//            busForPurchase3,
+//            companyForPurchase3,
+//            qualificationForPurchase3,
+//            employeeForPurchase3
+//        );
+//
+//        Purchase purchase4 = new Purchase(
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//            "Pleven",
+//            "Sofia",
+//            1300F,
+//            PurchaseUnitType.KG,
+//            20,
+//            truckForPurchase4,
+//            companyForPurchase4,
+//            qualificationForPurchase4,
+//            employeeForPurchase4
+//        );
+//
+//        Purchase purchase5 = new Purchase(
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//            "Pleven",
+//            "Sofia",
+//            1300F,
+//            PurchaseUnitType.CM,
+//            20,
+//            truckForPurchase5,
+//            companyForPurchase5,
+//            qualificationForPurchase5,
+//            employeeForPurchase5
+//        );
+//
+//        Purchase purchase6 = new Purchase(
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//            "Pleven",
+//            "Sofia",
+//            1300F,
+//            PurchaseUnitType.POUND,
+//            20,
+//            truckForPurchase6,
+//            companyForPurchase6,
+//            qualificationForPurchase6,
+//            employeeForPurchase6
+//        );
+//
+//        create a purchase
 //        PurchaseDao.createPurchase(purchase1);
 //        PurchaseDao.createPurchase(purchase2);
 //        PurchaseDao.createPurchase(purchase3);
 //        PurchaseDao.createPurchase(purchase4);
 //        PurchaseDao.createPurchase(purchase5);
+//        PurchaseDao.createPurchase(purchase6);
 
-        //read an purchase (The ORM requires to have a default constructor inside the Company Entity
+        //read a purchase (The ORM requires to have a default constructor inside the Company Entity
 //        System.out.println(PurchaseDao.getPurchaseById(1));
 //        System.out.println(PurchaseDao.getPurchaseById(2));
 //        System.out.println(PurchaseDao.getPurchaseById(3));
 //        System.out.println(PurchaseDao.getPurchaseById(4));
 //        System.out.println(PurchaseDao.getPurchaseById(5));
+//        System.out.println(PurchaseDao.getPurchaseById(6));
 
         //read all purchases
 //        System.out.println(PurchaseDao.getAllPurchases());
 
-        //update an purchase
+        //update a purchase
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
-//        Company newCompanyToWork = CompanyDao.getCompanyById(2);
-//        Purchase newPurchase = new Purchase();
-//        newEmployee.setFirstName("AntoanNew");
-//        newEmployee.setLastName("ParashkevovNew");
-//        newEmployee.setSalary(1300F);
-//        newEmployee.setCompany(newCompanyToWork);
-//        newEmployee.setId(1);
-//        PurchaseDao.updateEmployee(newEmployee);
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the PurchaseDao class
+//        Company newCompanyForPurchase = CompanyDao.getCompanyById(2);
+//        Employee newEmployeeForPurchase = EmployeeDao.getEmployeeById(2);
+//        Qualification newQualificationForPurchase = QualificationDao.getQualificationById(2);
+//        Bus newBusForPurchase = BusDao.getBusById(8);
+//        Purchase newPurchase = new Purchase(
+//            LocalDate.of(2024, 1, 20),
+//            LocalDate.of(2024, 1, 30),
+//                "Varna",
+//                "Sofia",
+//                1600F,
+//                PurchaseUnitType.PEOPLE,
+//                50,
+//                newBusForPurchase,
+//                newCompanyForPurchase,
+//                newQualificationForPurchase,
+//                newEmployeeForPurchase
+//        );
+//        newPurchase.setId(1);
+//        PurchaseDao.updatePurchase(newPurchase);
 
-        //delete an purchase
-//        Purchase purchaseToDelete = PurchaseDao.getPurchaseById(1);
-//        PurchaseDao.deleteEmployee(purchaseToDelete);
+        //delete a purchase
+//        Purchase purchaseToDelete = PurchaseDao.getPurchaseById(6);
+//        PurchaseDao.deletePurchase(purchaseToDelete);
 
         //PURCHASE END
 
@@ -216,14 +323,14 @@ public class Main {
 //        Qualification qualification4 = new Qualification("heavy_cargo");
 //        Qualification qualification5 = new Qualification("oversied_cargo");
 
-        //create an qualification
+        //create a qualification
 //        QualificationDao.createQualification(qualification1);
 //        QualificationDao.createQualification(qualification2);
 //        QualificationDao.createQualification(qualification3);
 //        QualificationDao.createQualification(qualification4);
 //        QualificationDao.createQualification(qualification5);
 
-        //read an qualification (The ORM requires to have a default constructor inside the Company Entity
+        //read a qualification (The ORM requires to have a default constructor inside the Company Entity
 //        System.out.println(QualificationDao.getQualificationById(1));
 //        System.out.println(QualificationDao.getQualificationById(2));
 //        System.out.println(QualificationDao.getQualificationById(3));
@@ -235,7 +342,7 @@ public class Main {
 
         //update a qualification
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the QualificationDao class
 //        Qualification newQualification = new Qualification();
 //        newQualification.setType("special_cargo_new");
 //        newQualification.setId(1);
@@ -274,7 +381,7 @@ public class Main {
 
         //update a receipt
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the ReceiptsDao class
 //        Receipt newReceipt = new Receipt();
 //        newReceipt.setClient();
 //        newReceipt.setPurchase();
@@ -295,11 +402,11 @@ public class Main {
 //        Company companyForBus4 = CompanyDao.getCompanyById(4);
 //        Company companyForBus5 = CompanyDao.getCompanyById(5);
 
-//        Bus bus1 = new Bus("RA6246KS", companyForBus1, 10);
-//        Bus bus2 = new Bus("SV6246KS", companyForBus2, 20);
-//        Bus bus3 = new Bus("WA6246KS", companyForBus3, 30);
-//        Bus bus4 = new Bus("PW6246KS", companyForBus4, 40);
-//        Bus bus5 = new Bus("OW6246KS", companyForBus5, 50);
+//        Bus bus1 = new Bus("RA6246VV", companyForBus1, 10);
+//        Bus bus2 = new Bus("SV6246VK", companyForBus2, 20);
+//        Bus bus3 = new Bus("WA6246VL", companyForBus3, 30);
+//        Bus bus4 = new Bus("PW6246VA", companyForBus4, 40);
+//        Bus bus5 = new Bus("OW6246WA", companyForBus5, 50);
 
         //create a bus
 //        BusDao.createBus(bus1);
@@ -309,26 +416,28 @@ public class Main {
 //        BusDao.createBus(bus5);
 
         //read a bus (The ORM requires to have a default constructor inside the Company Entity
-//        System.out.println(BusDao.getBusById(1));
-//        System.out.println(BusDao.getBusById(2));
-//        System.out.println(BusDao.getBusById(3));
-//        System.out.println(BusDao.getBusById(4));
-//        System.out.println(BusDao.getBusById(5));
+//        System.out.println(BusDao.getBusById(7));
+//        System.out.println(BusDao.getBusById(8));
+//        System.out.println(BusDao.getBusById(9));
+//        System.out.println(BusDao.getBusById(10));
+//        System.out.println(BusDao.getBusById(11));
 
-        //read all busses
-//        System.out.println(BusDao.getAllBuss());
+        //read all buses
+//        System.out.println(BusDao.getAllBuses());
 
         //update a bus
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the BusDao class
+//        Company newCompany = CompanyDao.getCompanyById(1);
 //        Bus newBus = new Bus();
-//        newBus.setClient();
-//        newBus.setPurchase();
-//        newBus.setId(1);
+//        newBus.setSeats(15);
+//        newBus.setRegistrationNumber("RA6246VV");
+//        newBus.setCompany(newCompany);
+//        newBus.setId(7);
 //        BusDao.updateBus(newBus);
 
-        //delete an bus
-//        Bus busToDelete = BusDao.getBusById(1);
+        //delete a bus
+//        Bus busToDelete = BusDao.getBusById(11);
 //        BusDao.deleteBus(busToDelete);
 
         //BUS END
@@ -366,10 +475,13 @@ public class Main {
 
         //update a truck
         //means we want to UPDATE the record with primary key (id) 1.
-        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the TruckDao class
+//        Company newCompany = CompanyDao.getCompanyById(1);
 //        Truck newTruck = new Truck();
-//        newTruck.setClient();
-//        newTruck.setPurchase();
+//        newTruck.setUnit(CapacityUnit.L);
+//        newTruck.setCapacity(10);
+//        newTruck.setRegistrationNumber("RA6246KS");
+//        newTruck.setCompany(newCompany);
 //        newTruck.setId(1);
 //        TruckDao.updateTruck(newTruck);
 
