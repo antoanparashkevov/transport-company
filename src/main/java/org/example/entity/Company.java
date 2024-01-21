@@ -58,9 +58,12 @@ public class Company {
     }
 
     //parametrized constructor
-    public Company(String companyName, LocalDate foundationDate) {
+    public Company(String companyName, LocalDate foundationDate, Set<Employee> employees, Set<Vehicle> vehicles, Set<Purchase> purchases) {
         this.companyName = companyName;
         this.foundationDate = foundationDate;
+        this.employees = employees;
+        this.vehicles = vehicles;
+        this.purchases = purchases;
     }
 
     //GETTERS START
@@ -79,6 +82,10 @@ public class Company {
 
     public Set<Employee> getEmployees() {
         return employees;
+    }
+
+    public Set<Vehicle> getVehicles() {
+        return vehicles;
     }
 
     public Set<Purchase> getPurchases() {
@@ -103,6 +110,10 @@ public class Company {
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
+    }
+
+    public void setVehicles(Set<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 
     public void setPurchases(Set<Purchase> purchases) {

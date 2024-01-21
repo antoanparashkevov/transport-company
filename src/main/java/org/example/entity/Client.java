@@ -42,10 +42,11 @@ public class Client {
     }
 
     //parametrized constructor
-    public Client(String firstName, String lastName, String phoneNumber) {
+    public Client(String firstName, String lastName, String phoneNumber, Set<Purchase> purchases) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.purchases = purchases;
     }
 
     //GETTERS START
