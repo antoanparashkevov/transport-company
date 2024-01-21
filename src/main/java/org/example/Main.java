@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.configuration.SessionFactoryUtil;
 
+import org.example.dao.ClientDao;
 import org.example.dao.CompanyDao;
 import org.example.entity.Client;
 import org.example.entity.Company;
@@ -12,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
 
         SessionFactoryUtil.getSessionFactory().openSession();
+
+        //COMPANY START
 
 //      Company company1 = new Company("Speedy", LocalDate.of(2023, 1, 5));
 //      Company company2 = new Company("Econt", LocalDate.of(2022, 2, 10));
@@ -39,14 +42,15 @@ public class Main {
         //update a company
         //means we want to UPDATE the record with primary key (id) 1.
         // If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
-//        Company companyToUpdate = new Company();
-//        companyToUpdate.setId(1);
-//        companyToUpdate.setCompanyName("newSAP");
-//        companyToUpdate.setFoundationDate(LocalDate.of(2024,1, 1));
-//        CompanyDao.updateCompany(companyToUpdate);
+//      Company newCompany = new Company();
+//      newCompany.setId(1);
+//      newCompany.setCompanyName("newSAP");
+//      newCompany.setFoundationDate(LocalDate.of(2024,1, 1));
+//      CompanyDao.updateCompany(newCompany);
 
         //delete a company
-//      CompanyDao.deleteCompany(company1);
+//      Company companyToDelete = CompanyDao.getCompanyById(5);
+//      CompanyDao.deleteCompany(companyToDelete);
 
 //      System.out.println(CompanyDao.companyFindByCompanyName("VM"));//no result found for query
 //      System.out.println(CompanyDao.companyFindByCompanyName("SAP"));
@@ -57,8 +61,46 @@ public class Main {
 
 //      System.out.println(CompanyDao.getCompanyEmployeesDTO(1));
 
-//        Client client = new Client("Antoan", "Parashkevov", "0877268727");
-//        System.out.println(client);
+        //COMPANY END
 
+        //CLIENT START
+
+//        Client client1 = new Client("Antoan", "Parashkevov", "0877268726");
+//        Client client2 = new Client("Ivan", "Ivanov", "0877268725");
+//        Client client3 = new Client("Petko", "Petkov", "0877268724");
+//        Client client4 = new Client("Svetlozar", "Georgiev", "0877268723");
+//        Client client5 = new Client("Pavel", "Draganov", "0877268722");
+
+        //create a client
+//        ClientDao.createClient(client1);
+//        ClientDao.createClient(client2);
+//        ClientDao.createClient(client3);
+//        ClientDao.createClient(client4);
+//        ClientDao.createClient(client5);
+
+        //read a client (The ORM requires to have a default constructor inside the Company Entity
+//        System.out.println(ClientDao.getClientById(1));
+//        System.out.println(ClientDao.getClientById(2));
+//        System.out.println(ClientDao.getClientById(3));
+//        System.out.println(ClientDao.getClientById(4));
+//        System.out.println(ClientDao.getClientById(5));
+
+        //read all clients
+//        System.out.println(ClientDao.getAllClients());
+
+        //update a client
+        //means we want to UPDATE the record with primary key (id) 1.
+        //If we omit to set the id, we will perform an INSERT query since we're using saveOrUpdate() session method inside the CompanyDao class
+//          Client newClient = new Client();
+//          newClient.setFirstName("AntoanNew");
+//          newClient.setLastName("ParashkevovNew");
+//          newClient.setPhoneNumber("0877268727");
+//          newClient.setId(1);
+//          ClientDao.updateClient(newClient);
+        //CLIENT END
+
+        //delete a client
+//        Client clientToDelete = ClientDao.getClientById(6);
+//        ClientDao.deleteClient(clientToDelete);
     }
 }
