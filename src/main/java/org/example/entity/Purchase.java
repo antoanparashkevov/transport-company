@@ -5,6 +5,7 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
+import org.example.entity.enumeration.PurchaseUnitType;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -43,13 +44,12 @@ public class Purchase {
     @Column(name="price", nullable = false)
     private float price;
 
-//    unitType - people
-    //ako unitType === people, dali unitValue e integer
+    //TODO: if unitType === PurchaseUnitType.people, therefore unitValue should be integer, not a floating point number
+    @Enumerated(EnumType.STRING)
     @Column(name = "unit_type", nullable = false)
-    private String unitType;
+    private PurchaseUnitType unitType;
 
-    //unitValue - KG, GR, number
-    //dali seats ot Bus i unitValue sa sywmestimi, toest dali awtobusa ima dostatuchno mqsto
+    //TODO: if there is a Bus as a vehicle, the unitValue should be less than or equal to the Bus seats
     @Column(name = "unit_value", nullable = false)
     private float unitValue;
 
@@ -82,13 +82,14 @@ public class Purchase {
     }
 
     //parametrized constructor
-
-    public Purchase(LocalDate startTime, LocalDate endTime, String departurePlace, String arrivalPlace, float price, Vehicle vehicle, Company company, Qualification qualification, Employee employee) {
+    public Purchase(LocalDate startTime, LocalDate endTime, String departurePlace, String arrivalPlace, float price, PurchaseUnitType unitType, float unitValue, Vehicle vehicle, Company company, Qualification qualification, Employee employee) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.price = price;
+        this.unitType = unitType;
+        this.unitValue = unitValue;
         this.vehicle = vehicle;
         this.company = company;
         this.qualification = qualification;
@@ -119,6 +120,14 @@ public class Purchase {
 
     public float getPrice() {
         return price;
+    }
+
+    public PurchaseUnitType getUnitType() {
+        return unitType;
+    }
+
+    public float getUnitValue() {
+        return unitValue;
     }
 
     public Vehicle getVehicle() {
@@ -171,6 +180,14 @@ public class Purchase {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public void setUnitType(PurchaseUnitType unitType) {
+        this.unitType = unitType;
+    }
+
+    public void setUnitValue(float unitValue) {
+        this.unitValue = unitValue;
     }
 
     public void setVehicle(Vehicle vehicle) {
