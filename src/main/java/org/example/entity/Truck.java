@@ -11,6 +11,15 @@ public class Truck extends Vehicle {
     @Column(name="capacity", nullable = false)
     private float capacity;
 
+    //default constructor
+    public Truck() {}
+
+    //parametrized constructor
+    public Truck(String registrationNumber, Company company, float capacity) {
+        super(registrationNumber, company);
+        this.capacity = capacity;
+    }
+
     public float getCapacity() {
         return capacity;
     }

@@ -9,6 +9,15 @@ public class Bus extends Vehicle {
     @Column(name="seats", nullable = false)
     private int seats;
 
+    //default constructor
+    public Bus() {}
+
+    //parametrized constructor
+    public Bus(String registrationNumber, Company company, int seats) {
+        super(registrationNumber, company);
+        this.seats = seats;
+    }
+
     public int getSeats() {
         return seats;
     }
