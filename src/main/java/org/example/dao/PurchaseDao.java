@@ -73,4 +73,51 @@ public class PurchaseDao {
             transaction.commit();
         }
     }
+
+    //sum purchases profit
+    public static Double sumPurchasesProfit(){
+        Double profit;
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            profit = session.createQuery("select sum(p.price) From org.example.entity.Purchase p", Double.class)
+                    .getSingleResult();
+
+            transaction.commit();
+        }
+        return profit;
+    }
+
+    //sum purchases orders
+    public static Long sumPurchasesOrders() {
+        Long newOrders;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            newOrders = session.createQuery("select count(p.id) From org.example.entity.Purchase p", Long.class)
+                    .getSingleResult();
+
+            transaction.commit();
+        }
+        return newOrders;
+    }
+
+    //order by destination
+    public static List<Purchase> getNewOrdersByDestination(String arrivalPoint) {
+        List<Purchase> purchases;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            purchases = session.createQuery("select p from org.example.entity.Purchase p" +
+                    " where p.arrivalPlace = :arrivalPoint",
+                    Purchase.class)
+                    .setParameter("arrivalPoint", arrivalPoint)
+                    .getResultList();
+
+            transaction.commit();
+        }
+        return purchases;
+    }
 }
