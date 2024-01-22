@@ -67,7 +67,7 @@ public class Main {
 
 //        System.out.println(CompanyDao.getCompanyByProfitDto(1));
 
-        System.out.println(CompanyDao.getCompanyProfitBetweenDates(1, LocalDate.of(2024, 1, 20), LocalDate.of(2024, 1, 30)));
+//        System.out.println(CompanyDao.getCompanyProfitBetweenDates(1, LocalDate.of(2024, 1, 20), LocalDate.of(2024, 1, 30)));
 
         //COMPANY END
 
@@ -328,6 +328,10 @@ public class Main {
         //delete a purchase
 //        Purchase purchaseToDelete = PurchaseDao.getPurchaseById(6);
 //        PurchaseDao.deletePurchase(purchaseToDelete);
+
+//        System.out.println(PurchaseDao.sumPurchasesProfit());
+//        System.out.println(PurchaseDao.sumPurchasesOrders());
+//        System.out.println(PurchaseDao.getNewOrdersByDestination("Sofia"));
 
         //PURCHASE END
 
