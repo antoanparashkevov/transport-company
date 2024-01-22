@@ -1,6 +1,8 @@
 package org.example.dao;
 
 import org.example.configuration.SessionFactoryUtil;
+import org.example.dto.EmployeeProfitDto;
+import org.example.dto.QualificationDto;
 import org.example.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -73,4 +75,45 @@ public class EmployeeDao {
             transaction.commit();
         }
     }
+
+    //retrieves the employee's qualifications
+    public static List<QualificationDto> getEmployeeQualificationsDto(long id) {
+        List<QualificationDto> qualifications;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            qualifications = session.createQuery("select new org.example.dto.QualificationDto(q.id, q.type) from Qualification q"
+                    + " join q.employees e "
+                    + "where e.id = :id",
+                    QualificationDto.class)
+                    .setParameter("id", id)
+                    .getResultList();
+
+            transaction.commit();
+        }
+        return qualifications;
+    }
+
+    //retrieves the employee's profit
+    public static Double getEmployeeProfit(long id ) {
+        Double profit;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            profit = session.createQuery(" select sum(p.price) from Employee e" +
+                    " join e.purchases p" +
+                    " join p.receipts r" +
+                    " where r.id is not null and e.id = :id",
+                    Double.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+
+            transaction.commit();
+        }
+        return profit;
+    }
+
+//    TODO: getEmployeeOrders, getEmployeeBySalary
 }
