@@ -21,6 +21,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -242,6 +243,28 @@ public class CompanyDao {
 //        return profits;
 //    }
 
-    //TODO: filterByName, filterByIncome, getCompanyIncomeForPeriod
+    //gives the profit of company with id in time period
+    public static Double getCompanyProfitBetweenDates(long id , LocalDate startTime, LocalDate endTime ) {
+        Double profit;
+        //TODO: returning null
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            profit = session.createQuery(" select sum(p.price) from Company c" +
+                    " join c.purchases p " +
+                    " join p.receipts r" +
+                    " where r.id is not null and c.id = :id"+
+                    " and p.startTime >= :startTime"+
+                    " and p.endTime <= :endTime",
+                    Double.class)
+                    .setParameter("id", id)
+                    .setParameter("startTime", startTime)
+                    .setParameter("endTime", endTime)
+                    .getSingleResult();
+            transaction.commit();
+        }
+        return profit;
+    }
+
+    //TODO: filterByName, filterByIncome, getCompanyIncomeForPeriod from Ivo
 
 }
