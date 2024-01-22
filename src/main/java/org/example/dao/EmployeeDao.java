@@ -115,5 +115,40 @@ public class EmployeeDao {
         return profit;
     }
 
-//    TODO: getEmployeeOrders, getEmployeeBySalary
+    //retrieves the number of orders of a specified employee's id
+    public static Long getEmployeeOrders(long id) {
+        Long numberOfOrders;
+        //TODO: is it correct? Long?
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            numberOfOrders = session.createQuery(" select count(p.id) from Employee e" +
+                    " join e.purchases p" +
+                    " where e.id = :id",
+                    Long.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+
+            transaction.commit();
+        }
+        return numberOfOrders;
+    }
+
+    //retrieves all employees that have the passed salary
+    public static List<Employee> getEmployeesBySalary(float salary) {
+        List<Employee> employees;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            employees = session.createQuery("Select e From org.example.entity.Employee e"+
+                    " where e.salary = :salary",
+                    Employee.class)
+                    .setParameter("salary", salary)
+                    .getResultList();
+
+            transaction.commit();
+        }
+        return employees;
+    }
 }
