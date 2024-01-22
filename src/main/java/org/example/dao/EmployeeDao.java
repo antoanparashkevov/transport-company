@@ -1,7 +1,6 @@
 package org.example.dao;
 
 import org.example.configuration.SessionFactoryUtil;
-import org.example.dto.EmployeeProfitDto;
 import org.example.dto.QualificationDto;
 import org.example.entity.Employee;
 import org.hibernate.Session;
@@ -122,7 +121,7 @@ public class EmployeeDao {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            numberOfOrders = session.createQuery(" select count(p.id) from Employee e" +
+            numberOfOrders = session.createQuery("select count(p.id) from Employee e" +
                     " join e.purchases p" +
                     " where e.id = :id",
                     Long.class)
@@ -141,7 +140,7 @@ public class EmployeeDao {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            employees = session.createQuery("Select e From org.example.entity.Employee e"+
+            employees = session.createQuery("select e from org.example.entity.Employee e"+
                     " where e.salary = :salary",
                     Employee.class)
                     .setParameter("salary", salary)

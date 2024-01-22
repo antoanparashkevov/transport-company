@@ -5,11 +5,13 @@ package org.example.dao;
 //DAO layer
 //there is no need to add any annotations since we get the session from the session configuration in order to communicate with the database
 
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
 import org.example.configuration.SessionFactoryUtil;
+import org.example.dto.CompanyDto;
 import org.example.dto.CompanyProfitDto;
 import org.example.dto.EmployeeDto;
 import org.example.dto.VehicleDto;
@@ -246,7 +248,7 @@ public class CompanyDao {
     //gives the profit of company with id in time period
     public static Double getCompanyProfitBetweenDates(long id , LocalDate startTime, LocalDate endTime ) {
         Double profit;
-        //TODO: returning null
+
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             profit = session.createQuery(" select sum(p.price) from Company c" +
@@ -265,6 +267,50 @@ public class CompanyDao {
         return profit;
     }
 
-    //TODO: filterByName, filterByIncome, getCompanyIncomeForPeriod from Ivo
+    //filters companies by companyName
+//    public List<Company> filterByName(String companyName, Optional<OrderBy> sort) {
+//        List<Company> companies;
+//
+//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+//            Transaction transaction = session.beginTransaction();
+//
+//            StringBuilder queryString = new StringBuilder("select c from Company c" +
+//                    " where c.name like concat('%', :companyName, '%') ");
+//            sort.ifPresent(value -> {
+//                queryString.append(" order by name ").append(value);
+//            });
+//            //TODO: without queryString
+//            companies = session.createQuery(queryString.toString(), Company.class)
+//                    .setParameter("companyName", companyName)
+//                    .getResultList();
+//            transaction.commit();
+//        }
+//
+//        return companies;
+//    }
 
+//    public List<CompanyDto> filterByProfit(Float profit, QueryOperator comparisonOperator, Optional<OrderBy> sort) {
+//        List<CompanyDto> companies;
+//
+//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+//            Transaction transaction = session.beginTransaction();
+//
+//            StringBuilder queryString = new StringBuilder(" SELECT company.name AS name, SUM(coalesce(price, 0)) AS income " +
+//                    " FROM company " +
+//                    " left join transport_company.transport_order on company.id = transport_order.company_id " +
+//                    " left join transport_company.receipt on receipt.order_id = transport_order.id " +
+//                    " GROUP BY company.name ");
+//            //TODO: without queryString and createNativeQuery
+//            queryString.append(" having income ").append(comparisonOperator.getSymbol()).append(income);
+//            sort.ifPresent(value -> {
+//                queryString.append(" order by income ").append(value);
+//            });
+//
+//            companies = session.createNativeQuery(queryString.toString(),
+//                    CompanyDto.RESULT_SET_MAPPING_NAME, CompanyDto.class).getResultList();
+//            transaction.commit();
+//        }
+//
+//        return companies;
+//    }
 }

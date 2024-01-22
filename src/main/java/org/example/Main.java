@@ -14,6 +14,8 @@ public class Main {
 
         SessionFactoryUtil.getSessionFactory().openSession();
 
+//        TODO: create mockGenerator for fake data (PRIORITY TASK)
+
         //COMPANY START
 
 //      Company company1 = new Company("Speedy", LocalDate.of(2023, 1, 5));
@@ -63,7 +65,9 @@ public class Main {
 
 //        System.out.println(CompanyDao.getCompanyVehiclesDTO(1));
 
-        System.out.println(CompanyDao.getCompanyByProfitDto(1));
+//        System.out.println(CompanyDao.getCompanyByProfitDto(1));
+
+        System.out.println(CompanyDao.getCompanyProfitBetweenDates(1, LocalDate.of(2024, 1, 20), LocalDate.of(2024, 1, 30)));
 
         //COMPANY END
 
@@ -109,6 +113,7 @@ public class Main {
         //CLIENT END
 
         //EMPLOYEE START
+
 //        Company companyToWork1 = CompanyDao.getCompanyById(1);
 //        Company companyToWork2 = CompanyDao.getCompanyById(2);
 //        Company companyToWork3 = CompanyDao.getCompanyById(3);
@@ -154,6 +159,13 @@ public class Main {
 //        Employee employeeToDelete = EmployeeDao.getEmployeeById(1);
 //        EmployeeDao.deleteEmployee(employeeToDelete);
 
+//        System.out.println(EmployeeDao.getEmployeeQualificationsDto(1));
+
+//        System.out.println(EmployeeDao.getEmployeeProfit(1));
+
+//        System.out.println(EmployeeDao.getEmployeeOrders(1));
+
+//        System.out.println(EmployeeDao.getEmployeesBySalary(1400F));
         //EMPLOYEE END
 
         //PURCHASE START
