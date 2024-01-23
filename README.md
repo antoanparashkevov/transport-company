@@ -39,3 +39,5 @@ company
 - <a href="https://www.java.com/en/">Java</a>
 
 # <p id="#diagram">Diagram</p>
+
+![diagram](https://github.com/antoanparashkevov/transport-company/assets/80749603/65d3020d-12ef-402a-b204-42a4fda5d589)
