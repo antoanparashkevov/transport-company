@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.configuration.SessionFactoryUtil;
 
+import org.example.export.PrintPdf;
+
 import org.example.dao.*;
 import org.example.entity.*;
 import org.example.entity.enumeration.CapacityUnit;
@@ -529,5 +531,9 @@ public class Main {
 //        TruckDao.deleteTruck(truckToDelete);
 
         //TRUCK END
+
+        //PRINT PDF
+//        Purchase purchase1 = PurchaseDao.getPurchaseById(1);
+//        PrintPdf.printPurchaseToPdf(purchase1);
     }
 }
