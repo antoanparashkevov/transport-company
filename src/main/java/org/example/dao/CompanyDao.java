@@ -5,7 +5,6 @@ package org.example.dao;
 //DAO layer
 //there is no need to add any annotations since we get the session from the session configuration in order to communicate with the database
 
-import jakarta.persistence.OrderBy;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -128,6 +127,9 @@ public class CompanyDao {
 
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
 
+            //  can be accomplished by this
+//            StringBuilder queryString = new StringBuilder("select c from Company c" +
+//                    " where c.companyName like concat(:companyName, '%')");
             //create a criteria builder
             CriteriaBuilder cb = session.getCriteriaBuilder();
 
@@ -158,18 +160,18 @@ public class CompanyDao {
     public static Set<Employee> getCompanyEmployees(long id) {
         Company company;
 
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()){
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
             //HQL - Hibernate Query Language
             company = session.createQuery(
-            "select c from Company c" +
-                " join fetch c.employees" +
-                " where c.id = :id",
-                Company.class
-            )
-            .setParameter("id", id)
-            .getSingleResult();
+                            "select c from Company c" +
+                                    " join fetch c.employees" +
+                                    " where c.id = :id",
+                            Company.class
+                    )
+                    .setParameter("id", id)
+                    .getSingleResult();
 
             transaction.commit();
 
@@ -187,13 +189,13 @@ public class CompanyDao {
 
             //HQL - Hibernate Query Language
             employees = session.createQuery(
-                "select new org.example.dto.EmployeeDto(e.id, e.firstName, e.lastName, e.salary) from Employee e" +
-                        " join e.company c" +
-                        " where c.id = :id",
-                EmployeeDto.class
-            )
-            .setParameter("id", id)
-            .getResultList();
+                            "select new org.example.dto.EmployeeDto(e.id, e.firstName, e.lastName, e.salary) from Employee e" +
+                                    " join e.company c" +
+                                    " where c.id = :id",
+                            EmployeeDto.class
+                    )
+                    .setParameter("id", id)
+                    .getResultList();
 
             transaction.commit();
 
@@ -206,18 +208,17 @@ public class CompanyDao {
     public static List<VehicleDto> getCompanyVehiclesDTO(long id) {
         List<VehicleDto> vehicles;
 
-        try(Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
             //HQL - Hibernate Query Language
             vehicles = session.createQuery(
-                    "select new org.example.dto.VehicleDto(v.id, v.registrationNumber, c.companyName) from Vehicle v" +
-                            " join v.company c" +
-                            " where c.id = :id",
-                    VehicleDto.class
-            )
-            .setParameter("id", id)
-            .getResultList();
+                "select new org.example.dto.VehicleDto(v.id, v.registrationNumber, c.companyName) from Vehicle v" +
+                        " join v.company c" +
+                        " where c.id = :id",
+                VehicleDto.class)
+                .setParameter("id", id)
+                .getResultList();
 
             transaction.commit();
         }
@@ -225,39 +226,40 @@ public class CompanyDao {
     }
 
     //retrieves the profit of a specified company id
-//    public static List<CompanyProfitDto> getCompanyByProfitDto(long id ) {
-//        List<CompanyProfitDto> profits;
-//
-//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-//            Transaction transaction = session.beginTransaction();
-//            //TODO: check why sum() throws an error
-//            profits = session.createQuery(" select new org.example.dto.CompanyProfitDto(c.id, c.companyName, sum(p.price)) from Company c " +
-//                   // " join p.company c " +
-//                    " join c.purchases p " +
-//                    " join p.receipts r" +
-//                    " where r.id is not null and c.id = :id" +
-//                    " group by c.id, c.companyName "
-//                    , CompanyProfitDto.class)
-//                    .setParameter("id", id)
-//                    .getResultList();
-//            transaction.commit();
-//        }
-//        return profits;
-//    }
+    public static Double getCompanyByProfitDto(long id) {
+        Double profits;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            profits = session.createQuery(" select sum(p.price) from Company c" +
+                " join c.purchases p" +
+                " join p.receipts r" +
+                " where r.id is not null and c.id = :id" +
+                " group by c.id, c.companyName",
+                Double.class
+            )
+            .setParameter("id", id)
+            .getSingleResult();
+
+            transaction.commit();
+        }
+        return profits;
+    }
 
     //gives the profit of company with id in time period
-    public static Double getCompanyProfitBetweenDates(long id , LocalDate startTime, LocalDate endTime ) {
-        Double profit;
+    public static Double getCompanyProfitBetweenDates(long id, LocalDate startTime, LocalDate endTime) {
+        Double profit;//Double class acts as a wrapper for double type
 
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             profit = session.createQuery(" select sum(p.price) from Company c" +
-                    " join c.purchases p " +
-                    " join p.receipts r" +
-                    " where r.id is not null and c.id = :id"+
-                    " and p.startTime >= :startTime"+
-                    " and p.endTime <= :endTime",
-                    Double.class)
+                                    " join c.purchases p " +
+                                    " join p.receipts r" +
+                                    " where r.id is not null and c.id = :id" +
+                                    " and p.startTime >= :startTime" +
+                                    " and p.endTime <= :endTime",
+                            Double.class)
                     .setParameter("id", id)
                     .setParameter("startTime", startTime)
                     .setParameter("endTime", endTime)
@@ -268,49 +270,55 @@ public class CompanyDao {
     }
 
     //filters companies by companyName
-//    public List<Company> filterByName(String companyName, Optional<OrderBy> sort) {
-//        List<Company> companies;
-//
-//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-//            Transaction transaction = session.beginTransaction();
-//
-//            StringBuilder queryString = new StringBuilder("select c from Company c" +
-//                    " where c.name like concat('%', :companyName, '%') ");
-//            sort.ifPresent(value -> {
-//                queryString.append(" order by name ").append(value);
-//            });
-//            //TODO: without queryString
-//            companies = session.createQuery(queryString.toString(), Company.class)
-//                    .setParameter("companyName", companyName)
-//                    .getResultList();
-//            transaction.commit();
-//        }
-//
-//        return companies;
-//    }
+    public static List<Company> filterByName(String companyName, String sort) {
+        List<Company> companies;
+        //TODO: enum
 
-//    public List<CompanyDto> filterByProfit(Float profit, QueryOperator comparisonOperator, Optional<OrderBy> sort) {
-//        List<CompanyDto> companies;
-//
-//        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-//            Transaction transaction = session.beginTransaction();
-//
-//            StringBuilder queryString = new StringBuilder(" SELECT company.name AS name, SUM(coalesce(price, 0)) AS income " +
-//                    " FROM company " +
-//                    " left join transport_company.transport_order on company.id = transport_order.company_id " +
-//                    " left join transport_company.receipt on receipt.order_id = transport_order.id " +
-//                    " GROUP BY company.name ");
-//            //TODO: without queryString and createNativeQuery
-//            queryString.append(" having income ").append(comparisonOperator.getSymbol()).append(income);
-//            sort.ifPresent(value -> {
-//                queryString.append(" order by income ").append(value);
-//            });
-//
-//            companies = session.createNativeQuery(queryString.toString(),
-//                    CompanyDto.RESULT_SET_MAPPING_NAME, CompanyDto.class).getResultList();
-//            transaction.commit();
-//        }
-//
-//        return companies;
-//    }
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            //StringBuilder acts as a wrapper -> String
+
+            StringBuilder queryString = new StringBuilder("select c from Company c" +
+                    " where c.companyName like concat('%', :companyName, '%')");
+
+            if (sort != null) {
+
+                queryString.append(" order by companyName ").append(sort);
+            }
+
+            companies = session.createQuery(queryString.toString(), Company.class)
+                    .setParameter("companyName", companyName)
+                    .getResultList();
+            transaction.commit();
+        }
+
+        return companies;
+    }
+
+    //13 000 -> List<CompanyDto> === 13 000
+    public static List<CompanyProfitDto> filterByProfit(Float profit, String operator, String sort) {
+        List<CompanyProfitDto> companies;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            if( sort == null || !sort.equals("desc") && !sort.equals("asc") ) {
+                sort = "asc";
+            }
+
+            //sum() - aggregate function
+            companies = session.createQuery("select new org.example.dto.CompanyProfitDto(c.id, c.companyName, sum(p.price)) from Company c" +
+                    " join c.purchases p" +
+                    " join p.receipts r" +
+                    " group by c.id" +
+                    " having sum(p.price) " + operator + " " + profit.toString() +
+                    " order by sum(p.price) " + sort,
+                    CompanyProfitDto.class)
+                    .getResultList();
+
+            transaction.commit();
+        }
+
+        return companies;
+    }
 }

@@ -6,12 +6,12 @@ public class CompanyProfitDto {
 
     private String companyName;
 
-    private float companyProfit;
+    private double companyProfit;
 
     public CompanyProfitDto() {
     }
 
-    public CompanyProfitDto(long id, String companyName, float companyProfit) {
+    public CompanyProfitDto(long id, String companyName, double companyProfit) {
         this.id = id;
         this.companyName = companyName;
         this.companyProfit = companyProfit;
@@ -27,7 +27,7 @@ public class CompanyProfitDto {
         return companyName;
     }
 
-    public float getCompanyProfit() {
+    public double getCompanyProfit() {
         return companyProfit;
     }
 
@@ -43,7 +43,7 @@ public class CompanyProfitDto {
         this.companyName = companyName;
     }
 
-    public void setCompanyProfit(float companyProfit) {
+    public void setCompanyProfit(double companyProfit) {
         this.companyProfit = companyProfit;
     }
 

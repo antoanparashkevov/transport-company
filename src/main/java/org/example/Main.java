@@ -69,6 +69,12 @@ public class Main {
 
 //        System.out.println(CompanyDao.getCompanyProfitBetweenDates(1, LocalDate.of(2024, 1, 20), LocalDate.of(2024, 1, 30)));
 
+//        System.out.println(CompanyDao.filterByProfit(3000F, " > ", " asc "));
+
+//        System.out.println(CompanyDao.getCompanyByProfitDto(1));
+
+//        System.out.println(CompanyDao.filterByName("E", "asc"));
+
         //COMPANY END
 
         //CLIENT START
