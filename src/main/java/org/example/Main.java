@@ -341,6 +341,15 @@ public class Main {
 //        System.out.println(PurchaseDao.sumPurchasesOrders());
 //        System.out.println(PurchaseDao.getNewOrdersByDestination("Sofia"));
 
+        //pay a purchase
+//        Purchase purchaseToPay = PurchaseDao.getPurchaseById(2);
+//        Client clientToPay = ClientDao.getClientById(2);
+
+//        PurchaseDao.pay(purchaseToPay, clientToPay);
+
+        //check if a purchase is paid
+//        System.out.println(PurchaseDao.checkPurchasePaid(1));
+
         //PURCHASE END
 
         //QUALIFICATION START

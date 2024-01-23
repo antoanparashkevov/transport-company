@@ -1,7 +1,9 @@
 package org.example.dao;
 
 import org.example.configuration.SessionFactoryUtil;
+import org.example.entity.Client;
 import org.example.entity.Purchase;
+import org.example.entity.Receipt;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -119,5 +121,68 @@ public class PurchaseDao {
             transaction.commit();
         }
         return purchases;
+    }
+
+    //retrieve the number of purchase's receipts
+    public static long getNumberOfPurchaseReceipts(long purchaseId) {
+        long employees;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            employees = session.createQuery(
+                            "select r " +
+                                    " from Receipt r" +
+                                    " join r.purchase p " +
+                                    "where p.id = :purchaseId",
+                            Receipt.class)
+                    .setParameter("purchaseId", purchaseId)
+                    .getResultStream()
+                    .count();
+
+            transaction.commit();
+        }
+        return employees;
+    }
+
+    //retrieve the number of purchase's clients
+    public static long getNumberOfPurchaseClients(long purchaseId) {
+        long isPaid;
+
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            isPaid = session.createQuery(
+                            "select c " +
+                                    " from Client c" +
+                                    " join c.purchases p" +
+                                    " where p.id = :purchaseId",
+                            Class.class)
+                    .setParameter("purchaseId", purchaseId)
+                    .getResultStream()
+                    .count();
+
+            transaction.commit();
+        }
+        return isPaid;
+    }
+
+    //pay a purchase
+    public static void pay(Purchase purchase, Client client) {
+        Receipt receipt = new Receipt();
+
+        receipt.setPurchase(purchase);
+        receipt.setClient(client);
+
+        ReceiptDao.createReceipt(receipt);
+    }
+
+    //check if a specified purchase id is paid
+    public static boolean checkPurchasePaid(long purchaseId){
+        long clients = PurchaseDao.getNumberOfPurchaseClients(purchaseId);
+
+        long receipts = PurchaseDao.getNumberOfPurchaseReceipts(purchaseId);
+
+        return clients == receipts;
     }
 }
