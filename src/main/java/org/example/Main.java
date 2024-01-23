@@ -176,13 +176,13 @@ public class Main {
 
         //PURCHASE START
 
-//        Bus busForPurchase1 = BusDao.getBusById(7);
-//        Bus busForPurchase2 = BusDao.getBusById(8);
-//        Bus busForPurchase3 = BusDao.getBusById(9);
+//        Bus busForPurchase1 = BusDao.getBusById(1);
+//        Bus busForPurchase2 = BusDao.getBusById(2);
+//        Bus busForPurchase3 = BusDao.getBusById(3);
 
-//        Truck truckForPurchase4 = TruckDao.getTruckById(2);
-//        Truck truckForPurchase5 = TruckDao.getTruckById(3);
-//        Truck truckForPurchase6 = TruckDao.getTruckById(4);
+//        Truck truckForPurchase4 = TruckDao.getTruckById(7);
+//        Truck truckForPurchase5 = TruckDao.getTruckById(8);
+//        Truck truckForPurchase6 = TruckDao.getTruckById(9);
 
 //        Company companyForPurchase1 = CompanyDao.getCompanyById(1);
 //        Company companyForPurchase2 = CompanyDao.getCompanyById(2);
